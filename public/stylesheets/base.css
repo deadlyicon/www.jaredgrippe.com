@@ -1,3 +1,50 @@
+html,body{
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+html{
+  width: 100%;
+  height: 100%;
+/*  overflow: hidden;*/
+}
+body{
+  width: 100%;
+  height: 100%;
+  background: #0066ff url(../images/godrays.gif) no-repeat fixed center center;
+  overflow-y: scroll;
+}
+
+#page{
+  position: relative;
+  width: 955px;
+  margin: 0 auto;
+  font: normal normal normal 24px Trebuchet, arial;
+  color: white;
+  min-height: 100%;
+}
+
+#page-background{
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  background: #000;
+  opacity: 0.90;
+  -moz-opacity: 0.90;
+  filter:alpha(opacity=90);
+  z-index: -1;
+}
+
+#controls{ display: none; }
+
+#content{
+  padding: 1em;
+}
+
+/*#header, #content{ display: none; }*/
+
 /* === FLASH MESSAGES === */
 div#flash-notice {
 	

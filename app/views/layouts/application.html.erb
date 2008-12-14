@@ -9,25 +9,34 @@
 		<meta name="robots" content="all" />	
 		<meta name="resource-type" content="document" />
 		<meta name="MSSmartTagsPreventParsing" content="true" />
+		
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/yui/2.6.0/build/fonts/fonts-min.css"> 
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/yui/2.6.0/build/base/base-min.css"> 
 		<%= stylesheet_link_tag 'base' %>
+		
 		<%= javascript_include_tag :defaults %>
 	</head>
 	<body>
-		<div id="container">
-			<div id="header">
-				<ul>
-					<% if logged_in? %>
-					<li><%= link_to 'Logout', logout_path %></li>
-					<% else %>
-					<li><%= link_to 'Login', login_path %></li>
-					<li><%= link_to 'Signup', signup_path %></li>
-					<% end %>
-				</ul>
+		<div id="page">
+		  <div id="page-background"></div>
+		  
+			<div id="controls">
+			  hello
+        <!-- <ul>
+          <% if logged_in? %>
+          <li><%= link_to 'Logout', logout_path %></li>
+          <% else %>
+          <li><%= link_to 'Login', login_path %></li>
+          <li><%= link_to 'Signup', signup_path %></li>
+          <% end %>
+        </ul> -->
 			</div>
+			
 			<div id="content">
 				<%= flash_messages %>
 				<%= yield :layout %>
 			</div>
+
 		</div>
 	</body>
 </html>
