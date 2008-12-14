@@ -15,6 +15,10 @@ body{
   overflow-y: scroll;
 }
 
+.red{
+  color: #ff6633;
+}
+
 #page{
   position: relative;
   width: 955px;

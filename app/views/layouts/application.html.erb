@@ -21,20 +21,22 @@
 		  <div id="page-background"></div>
 		  
 			<div id="controls">
-			  hello
-        <!-- <ul>
+        <ul>
           <% if logged_in? %>
           <li><%= link_to 'Logout', logout_path %></li>
           <% else %>
           <li><%= link_to 'Login', login_path %></li>
           <li><%= link_to 'Signup', signup_path %></li>
           <% end %>
-        </ul> -->
+        </ul>
 			</div>
 			
 			<div id="content">
-				<%= flash_messages %>
-				<%= yield :layout %>
+				<%#= flash_messages %>
+				<%#= yield :layout %>
+				
+				<span class="red">coming soon...</span>
+				
 			</div>
 
 		</div>
