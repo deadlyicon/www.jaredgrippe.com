@@ -1,0 +1,8 @@
+<% title 'posts' %>
+<% for post in @posts %>
+<%= render :partial => post %>
+<% end %>
+
+<% if current_user_is_an_admin? %>
+  <%= link_to 'New post', new_post_path %>
+<% end %>

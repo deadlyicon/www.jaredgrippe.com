@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password, :password_confirmation
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   
+  def admin?
+    current_user.is_a? User and current_user.is_an_admin?
+  end
+  alias :current_user_is_an_admin? :admin?
+  
   protected
   
   # Automatically respond with 404 for ActiveRecord::RecordNotFound

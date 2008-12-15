@@ -1,17 +1,17 @@
 development: &non_production_settings
   site_url: http://localhost:3000
-  site_name: Bort
-  admin_email: bort@bort.com
+  site_name: Jared Grippe [development]
+  admin_email: development@jaredgrippe.com
   
 test:
   <<: *non_production_settings
 
 staging:
-  site_url: http://staging.example.com
-  site_name: Bort
-  admin_email: bort@bort.com  
+  site_url: http://staging.jaredgrippe.com
+  site_name: Jared Grippe [staging]
+  admin_email: staging@jaredgrippe.com
   
 production:
-  site_url: http://www.example.com
-  site_name: Bort
-  admin_email: bort@bort.com
+  site_url: http://www.jaredgrippe.com
+  site_name: Jared Grippe
+  admin_email: jared@jaredgrippe.com

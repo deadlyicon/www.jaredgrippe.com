@@ -1,5 +1,9 @@
 module ApplicationHelper
   
+  def current_user_is_an_admin?
+    @controller.current_user_is_an_admin?
+  end
+  
   # Sets the page title and outputs title if container is passed in.
   # eg. <%= title('Hello World', :h2) %> will return the following:
   # <h2>Hello World</h2> as well as setting the page title.
@@ -15,6 +19,10 @@ module ApplicationHelper
       messages << content_tag(:div, html_escape(flash[msg.to_sym]), :id => "flash-#{msg}") unless flash[msg.to_sym].blank?
     end
     messages
+  end
+  
+  def head
+    content_for :head, yield
   end
   
 end

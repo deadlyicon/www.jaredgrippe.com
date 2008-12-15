@@ -19,11 +19,35 @@ body{
   color: #ff6633;
 }
 
+
+.ruby-keyword,
+.ruby-entity,
+.ruby-entity-name,
+.ruby-inherited{
+  font-size: 133%;
+}
+
+a,
+.ruby-keyword{
+ color: #ff6633; 
+}
+.ruby-entity,
+.ruby-entity input,
+.ruby-entity-name{
+ color: #89BDFF; 
+}
+.ruby-entity-name{
+  text-decoration: underline;
+}
+.ruby-inherited{ color: #9B5C2E; }
+.indent{ margin-left: 1em; }
+
+
 #page{
   position: relative;
   width: 955px;
   margin: 0 auto;
-  font: normal normal normal 24px Trebuchet, arial;
+  font: normal normal normal 139% Trebuchet, arial;
   color: white;
   min-height: 100%;
 }
@@ -97,3 +121,44 @@ div.fieldWithErrors textarea
 {
 	
 }
+
+
+
+
+
+
+/* === Posts === */
+.post{
+  text-align: justify;
+}
+.post .title input{
+  background: transparent;
+  border: none;
+}
+/*.post .body textarea{
+  width: 100%;
+  background: transparent;
+  color: white;
+  border: none;
+  height: 600px; /* TODO JS Auto Height 
+}*/
+.post .controls{
+  font-size: 50%;
+}
+.post .controls,
+.post .controls a,
+.post .controls a:visited{
+  color: inherit;
+  text-decoration:none;
+}
+
+
+
+
+
+
+
+
+
+
+

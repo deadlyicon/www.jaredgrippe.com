@@ -40,6 +40,11 @@ class User < ActiveRecord::Base
     list.include?(role.to_s) || list.include?('admin')
   end
   
+  def is_admin?
+    self.roles.map(&:name).include?('admin')
+  end
+  alias :is_an_admin? :is_admin?
+  
   # Not using open id
   def not_using_openid?
     identity_url.blank?
