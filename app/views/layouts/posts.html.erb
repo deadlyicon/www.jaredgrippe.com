@@ -1,0 +1,13 @@
+<%= render :partial => 'layouts/header' %>
+	<div>
+	  <span class="ruby keyword">class</span>
+	  <span class="ruby entity-name"><%= link_to 'JaredGrippe', root_path %></span>
+	  <span class="ruby inherited">&lt; Programmer</span>
+	</div>
+	<div class="indent">
+	  <%= yield :layout %>
+	</div>
+	<div>
+	  <span class="ruby keyword">end</span>
+	</div>
+<%= render :partial => 'layouts/footer' %>

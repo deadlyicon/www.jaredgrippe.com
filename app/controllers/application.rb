@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
   end
   alias :current_user_is_an_admin? :admin?
   
+  def redirect # TODO post about this redirect method
+    redirect_to( params['destination'] )
+  end
+  
   protected
   
   # Automatically respond with 404 for ActiveRecord::RecordNotFound

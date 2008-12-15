@@ -13,33 +13,41 @@ body{
   height: 100%;
   background: #0066ff url(../images/godrays.gif) no-repeat fixed center center;
   overflow-y: scroll;
+  font: normal normal normal 90% Trebuchet MS, Trebuchet;
+  color: white;
 }
 
-.red{
-  color: #ff6633;
+a{
+  color: #ff6633; 
+  text-decoration: none;
+}
+a:hover{
+ background-color: #ff6633;
+ color: #000713;
 }
 
-
-.ruby-keyword,
-.ruby-entity,
-.ruby-entity-name,
-.ruby-inherited{
+/* Simulating TextMate Sunburst Theme */
+.ruby{
   font-size: 133%;
 }
+.ruby a,
+.ruby a:hover,
+.ruby input{
+  color: inherit;
+  background: inherit;
+}
 
-a,
-.ruby-keyword{
+.ruby.keyword{
  color: #ff6633; 
 }
-.ruby-entity,
-.ruby-entity input,
-.ruby-entity-name{
+.ruby.entity,
+.ruby.entity-name{
  color: #89BDFF; 
 }
-.ruby-entity-name{
-  text-decoration: underline;
+
+.ruby.inherited{
+ color: #9B5C2E; 
 }
-.ruby-inherited{ color: #9B5C2E; }
 .indent{ margin-left: 1em; }
 
 
@@ -47,8 +55,6 @@ a,
   position: relative;
   width: 955px;
   margin: 0 auto;
-  font: normal normal normal 139% Trebuchet, arial;
-  color: white;
   min-height: 100%;
 }
 
@@ -68,7 +74,7 @@ a,
 #controls{ display: none; }
 
 #content{
-  padding: 1em;
+  padding: 0.5em 3em 0.5em 1em;
 }
 
 /*#header, #content{ display: none; }*/
@@ -127,21 +133,17 @@ div.fieldWithErrors textarea
 
 
 
-/* === Posts === */
+/* === Posts Styles === */
 .post{
   text-align: justify;
+}
+#posts .post{
+  margin: 1em 0;
 }
 .post .title input{
   background: transparent;
   border: none;
 }
-/*.post .body textarea{
-  width: 100%;
-  background: transparent;
-  color: white;
-  border: none;
-  height: 600px; /* TODO JS Auto Height 
-}*/
 .post .controls{
   font-size: 50%;
 }
@@ -150,15 +152,20 @@ div.fieldWithErrors textarea
 .post .controls a:visited{
   color: inherit;
   text-decoration:none;
+  vertical-align: middle;
 }
 
+.post input[type="submit"]{
+  border: none;
+  float:right;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: -1.5em;
+}
 
-
-
-
-
-
-
-
+#PostEditor{
+  background: transparent;
+}
 
 

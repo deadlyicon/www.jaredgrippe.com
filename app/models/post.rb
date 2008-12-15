@@ -13,4 +13,10 @@ class Post < ActiveRecord::Base
     read_attribute(:title).extend(Title)
   end
   
+  PREVIEW_BREAK = '<div style="page-break-after: always; ">'
+  
+  def preview
+    read_attribute(:body).split(PREVIEW_BREAK).first.chomp
+  end
+  
 end

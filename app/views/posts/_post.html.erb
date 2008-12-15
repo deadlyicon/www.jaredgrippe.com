@@ -1,12 +1,13 @@
 <div class="post">
   <div id="title" class="title">
-    <span class="ruby-keyword">def</span>
-    <span class="ruby-entity"><%=h post.title.camelcase %></span>
-    <span class="ruby-inherited">&lt; Post</span>
+    <span class="ruby keyword">def</span>
+    <span class="ruby entity"><%= link_to post.title.camelcase, post %></span>
+    <span class="ruby inherited">&lt; <%= link_to 'Post', posts_path %></span>
   </div>
-  <div id="body" class="body indent"><%= post.body %></div>
+  <div id="body" class="body indent"><%= defined?(body) ? body : post.body %></div>
   <div>
-    <span class="ruby-keyword">end
+    <span class="ruby keyword">
+      end
       <% if current_user_is_an_admin? %>
         <span class="controls">
           <%= link_to 'Edit', edit_post_path(post) %>
