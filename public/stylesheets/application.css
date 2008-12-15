@@ -23,7 +23,7 @@ a{
 }
 a:hover{
  background-color: #ff6633;
- color: #000713;
+ color: #001A47;
 }
 
 /* Simulating TextMate Sunburst Theme */
@@ -51,6 +51,7 @@ a:hover{
 .indent{ margin-left: 1em; }
 
 
+/* Layout */
 #page{
   position: relative;
   width: 955px;
@@ -71,25 +72,37 @@ a:hover{
   z-index: -1;
 }
 
-#controls{ display: none; }
+#controls{ 
+  position: absolute;
+  top: 0.5em;
+  right: 1em;
+  font-size: 90%;
+  color: #9B5C2E;
+}
+#controls a{
+  margin-left: 0.5em;
+}
 
 #content{
   padding: 0.5em 3em 0.5em 1em;
 }
 
-/*#header, #content{ display: none; }*/
+
+
+
 
 /* === FLASH MESSAGES === */
-div#flash-notice {
-	
+.flash {
+	text-align: center;
 }
-
-div#flash-warning {
-	
+.flash.notice {
+  color: #89BDFF;
 }
-
-div#flash-error {
-	
+.flash.warning {
+	color: #E3A336;
+}
+.flash.error {
+	color: #E23D27;
 }
 
 /* === ERROR MESSAGES === */

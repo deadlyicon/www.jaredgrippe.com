@@ -22,15 +22,14 @@
 		  <div id="page-background"></div>
 		  
 			<div id="controls">
-        <ul>
-          <% if logged_in? %>
-          <li><%= link_to 'Logout', logout_path %></li>
-          <% else %>
-          <li><%= link_to 'Login', login_path %></li>
-          <li><%= link_to 'Signup', signup_path %></li>
-          <% end %>
-        </ul>
+        <% if logged_in? %>
+          <%= current_user.name %>
+          <%= link_to 'logout', logout_path %>
+        <% else %>
+          <%= link_to 'login', login_path %>
+          <%= link_to 'signup', signup_path %>
+        <% end %>
 			</div>
 			
 			<div id="content">
-				<%= flash_messages %>
+        <div><%= flash_messages %></div>
