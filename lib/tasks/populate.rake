@@ -8,11 +8,16 @@ namespace :db do
     
     data = []
     100.times do
-      data.push [ 
-        Faker::Lorem.sentence( rand(6) + 2 ), 
-        '<p>'+Faker::Lorem.paragraphs( rand(20) + 2 ).join("</p>\n<p>")+'</p>'
-      ]
+      title = Faker::Lorem.sentence( rand(6) + 2 )
+      body = <<-BODY
+        <p>#{Faker::Lorem.paragraphs( rand(4) + 1 ).join("</p>\n<p>")}</p>
+        #{Post::PREVIEW_BREAK}
+        <p>#{Faker::Lorem.paragraphs( rand(18) + 2 ).join("</p>\n<p>")}</p>
+      BODY
+      data.push [ title, body ]
     end
+    
+    Post::PREVIEW_BREAK
       
     Post.import [:title, :body], data, :validate => false
   end

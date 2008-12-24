@@ -3,10 +3,13 @@
   <% javascript_anonymous_tag do -%>
     
     EndlessPage.observe('nearBottom', function(event){
-      console.dir({nearBottom:event});
+      //console.dir({nearBottom:event});
       
       EndlessPage.stop();
-      new Ajax.Request('/posts.js?page=' + EndlessPage.currentPage, {
+      new Ajax.Request('/posts.js', {
+        parameters: Object.toQueryString({
+          page: (EndlessPage.currentPage += 1)
+        }),
         asynchronous:true, 
         evalScripts:true, 
         method:'get'
@@ -19,11 +22,11 @@
 
 <% title 'posts' %>
 <div id="posts">
-  <% for post in @posts %>
-  <%= render :partial => post, :locals => { :body => post.preview } %>
-  <% end %>
+  <%= render :partial => @posts %>
 </div>
 <div id="loading">Loading....</div>
+<%#= load_more :partial => post, :into => :posts, :when => :scroll %>
+
 <% if current_user_is_an_admin? %>
   <%= link_to 'Post.new', new_post_path %>
 <% end %>

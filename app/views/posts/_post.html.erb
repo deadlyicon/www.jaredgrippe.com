@@ -4,7 +4,7 @@
     <span class="ruby entity"><%= link_to post.title.camelcase, post %></span>
     <span class="ruby inherited">&lt; <%= link_to 'Post', posts_path %></span>
   </div>
-  <div id="body" class="body indent"><%= defined?(body) ? body : post.body %></div>
+  <div id="body" class="body indent"><%= @preview ? post.preview : post.body %></div>
   <div>
     <span class="ruby keyword">
       end

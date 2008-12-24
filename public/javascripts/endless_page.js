@@ -12,44 +12,49 @@ var EndlessPage;
 
 (function(){
 
-  var onScroll = null;
+  var running = false;
+  var eventElement = new Element('div');
 
   EndlessPage = {
     totalPages: null, // If null page requests stop after first "records not found error" response
     currentPage: 1,
     onLoad: true, // If set to false EndlessPage does not start on load
-    distanceFromBottom: 200,
+    distanceFromBottom: 150,
     
     start: function(){
-      if (onScroll != null) return;
-      onScroll = function(){
-        if ( this.nearBottomOfPage() ) {
-          Element.fire(window,'EndlessPage:nearBottom');
-        };
-      }.bind(this);
+      if (running) return;
+      running = true;
       Event.observe(window,'scroll',onScroll);
       return this;
     },
     
     stop: function(){
+      if (!running) return;
+      running = false;
       Event.stopObserving(window,'scroll',onScroll);
-      onScroll = null;
       return this;
-    },
-    
-    scrollEvent: function(){
-      return scrollEvent;
     },
     
     nearBottomOfPage: function(){
       return scrollDistanceFromBottom() < EndlessPage.distanceFromBottom;
     },
     
-    observe: function(event, handler){
-      Element.observe(window,'EndlessPage:'+event, handler)
+    observe: function(event,handler){
+      Element.observe(eventElement,'EndlessPage:'+event,handler)
+      return this;
+    },
+    
+    stopObserving: function(event, handler){
+      Event.stopObserving(eventElement,event,handler);
       return this;
     }
   }
+  
+  function onScroll(event){
+    if ( EndlessPage.nearBottomOfPage() ) {
+      Element.fire(eventElement,'EndlessPage:nearBottom');
+    };
+  };
   
   function scrollDistanceFromBottom(argument) {
     return pageHeight() - (window.pageYOffset + window.innerHeight);
