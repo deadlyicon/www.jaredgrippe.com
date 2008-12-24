@@ -1,9 +1,29 @@
+<% head do -%>
+  <%= javascript_include_tag 'endless_page' %>
+  <% javascript_anonymous_tag do -%>
+    
+    EndlessPage.observe('nearBottom', function(event){
+      console.dir({nearBottom:event});
+      
+      EndlessPage.stop();
+      new Ajax.Request('/posts.js?page=' + EndlessPage.currentPage, {
+        asynchronous:true, 
+        evalScripts:true, 
+        method:'get'
+      });
+      
+    });
+  
+  <% end -%>
+<% end -%>
+
 <% title 'posts' %>
 <div id="posts">
   <% for post in @posts %>
   <%= render :partial => post, :locals => { :body => post.preview } %>
   <% end %>
 </div>
+<div id="loading">Loading....</div>
 <% if current_user_is_an_admin? %>
   <%= link_to 'Post.new', new_post_path %>
 <% end %>

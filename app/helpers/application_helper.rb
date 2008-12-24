@@ -21,8 +21,8 @@ module ApplicationHelper
     messages
   end
   
-  def head
-    content_for :head, yield
+  def head(&block)
+    content_for( :head, capture(&block) )
   end
   
 end
