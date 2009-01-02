@@ -4,7 +4,14 @@
     <span class="ruby entity"><%= link_to post.title.camelcase, post %></span>
     <span class="ruby inherited">&lt; <%= link_to 'Post', posts_path %></span>
   </div>
-  <div id="body" class="body indent"><%= @preview ? post.preview : post.body %></div>
+  <div class="indent">
+    <div id="tags">
+      <span class="ruby entity">TAGS</span> 
+      <span class="ruby keyword">=</span>
+      [ <%= ['tag1','tag2'].map{|tag| "<span class=\"ruby entity\">:#{tag}</span>" }.join(',') %> ]
+    </div>
+    <div id="body" class="body"><%= @preview ? post.preview : post.body %></div>
+  </div>  
   <div>
     <span class="ruby keyword">
       end

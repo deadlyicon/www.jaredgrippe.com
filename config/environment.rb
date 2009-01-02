@@ -5,6 +5,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 if ENV['RAILS_ENV'] == 'production'
+  # This is only needed when running on Dreamhost
   ENV['GEM_PATH'] = '/usr/lib/ruby/gems/1.8:/home/deadlyicon/.gems'
 end
 

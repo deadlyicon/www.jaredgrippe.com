@@ -34,13 +34,14 @@ module EndlessPageHelper
     end
     # content = block_given? ? capture('sex', &block) : render(opts[:render])
         
-    concat javascript_include_tag 'endless_page'
+    concat javascript_include_tag( 'endless_page' )
     concat "\n"
-    concat javascript_anonymous_tag <<-SCRIPT
+    concat javascript_anonymous_tag( <<-SCRIPT
       EndlessPage.contentElementId = $('#{opts[:collection_name]}');
       EndlessPage.totalPages = #{collection.total_pages};
       EndlessPage.url = '#{url_for(collection.first.class.new)}.js';
     SCRIPT
+    )
     concat "\n"
     concat content_tag(:div, content, :id => opts[:collection_name])
     concat "\n"
