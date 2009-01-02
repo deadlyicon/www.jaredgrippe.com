@@ -54,6 +54,10 @@ page {
 .indent {
   margin-left: 1em; }
 
+h1 {
+  font-size: 19px;
+  margin: 0; }
+
 #nav {
   position: absolute;
   top: 19px;
@@ -96,27 +100,30 @@ page {
     color: #e23d27; }
 
 
-.ruby {
-  font-size: 19px; }
-  .ruby a, .ruby a:hover, .ruby .input {
-    color: inherit;
-    background: inherit; }
-  .ruby.keyword, .ruby.keyword * {
-    color: #ff6633; }
-  .ruby.entity, .ruby.entity *, .ruby.entity-name {
-    color: #89bdff; }
-  .ruby.inherited, .ruby.inherited * {
-    color: #9b5c2e; }
+.ruby a, .ruby a:hover, .ruby .input {
+  color: inherit;
+  background: inherit; }
+.ruby.keyword, .ruby.keyword * {
+  color: #ff6633; }
+.ruby.entity, .ruby.entity *, .ruby.entity-name {
+  color: #89bdff; }
+.ruby.inherited, .ruby.inherited * {
+  color: #9b5c2e; }
 
 .post {
   text-align: justify; }
   .post img {
     margin: 0.5em; }
-  .post .title input {
-    background: transparent;
-    border: none; }
+  .post .title {
+    font-size: 19px; }
+    .post .title input {
+      background: transparent;
+      border: none; }
   .post .controls {
     font-size: 50%; }
+  .post .body {
+    overflow: hidden;
+    margin-left: 1em; }
   .post input[type="submit"] {
     border: none;
     float: right;
@@ -130,15 +137,19 @@ page {
     font-weight: bold; }
   .post .tags, .post .tags .ruby {
     font-size: 12px; }
-  .post .tags .tag {
-    color: #89bdff;
-    padding: 0 2px; }
-    .post .tags .tag:visited {
-      color: #89bdff; }
-    .post .tags .tag:hover {
+  .post .tags {
+    margin-left: 1em; }
+    .post .tags .tag {
       color: #89bdff;
-      background: transparent; }
+      padding: 0 2px; }
+      .post .tags .tag:visited {
+        color: #89bdff; }
+      .post .tags .tag:hover {
+        color: #89bdff;
+        background: transparent; }
 
+#posts .post:first-child {
+  margin-top: 0; }
 #posts .post {
   margin: 2.5em 0; }
   #posts .post .controls .back {

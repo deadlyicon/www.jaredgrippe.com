@@ -71,7 +71,9 @@ page
 .indent 
   :margin-left 1em 
 
-
+h1
+  :font-size 19px
+  :margin 0
 
 
 // Navigation Styles
@@ -144,7 +146,6 @@ div
 // Simulating TextMate Sunburst Theme
 
 .ruby
-  :font-size = 19px
   
   a, a:hover, .input
     :color inherit
@@ -168,13 +169,16 @@ div
   img
     :margin 0.5em
   .title
+    :font-size 19px
     input
       :background transparent
       :border none
   .controls
     :font-size 50%
   
-// .body
+  .body
+    :overflow hidden
+    :margin-left 1em
 //   a
 //     &, &:visited
 //       :color = !blue_text
@@ -198,6 +202,7 @@ div
   .tags, .tags .ruby
     :font-size 12px
   .tags
+    :margin-left 1em
     .tag
       :color = !blue_text
       :padding 0 2px
@@ -212,6 +217,8 @@ div
 
 // === List of Posts ===
 #posts
+  .post:first-child
+    :margin-top 0
   .post
     :margin 2.5em 0
     .controls

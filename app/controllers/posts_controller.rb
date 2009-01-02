@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.paginate(:page => params[:page], :per_page => 3)
+    @posts = Post.paginate(:page => params[:page], :per_page => 5)
     @preview = true
     
     respond_to do |format|
@@ -10,6 +10,7 @@ class PostsController < ApplicationController
       format.xml  { render :xml => @posts }
       format.json { render :json => @posts }
       format.js
+      format.rss
     end
   end
 
