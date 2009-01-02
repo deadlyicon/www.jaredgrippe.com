@@ -4,7 +4,9 @@
 # you don't control web/app server and can't set it the proper way
 # ENV['RAILS_ENV'] ||= 'production'
 
-ENV['GEM_PATH'] = '/usr/lib/ruby/gems/1.8:/home/deadlyicon/.gems'
+if ENV['RAILS_ENV'] == 'production'
+  ENV['GEM_PATH'] = '/usr/lib/ruby/gems/1.8:/home/deadlyicon/.gems'
+end
 
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
