@@ -12,8 +12,10 @@ var EndlessPage;
 
 (function(){
 
-  var running = false;
-  var eventElement = new Element('div');
+  var running = false,
+      eventElement = new Element('div'),
+      periodicalExecuter
+  ;
 
   EndlessPage = {
     totalPages: null, // If null page requests stop after first "records not found error" response
@@ -21,24 +23,26 @@ var EndlessPage;
     onLoad: true, // If set to false EndlessPage does not start on load
     distanceFromBottom: 150,
     
+    // If any of the functions in this array returns true we request more content
+    conditions: [
+      nearBottomOfPage,
+      windowIsTallerThenLoadedContent
+    ],
+    
     start: function(){
       if (running) return;
       running = true;
-      Event.observe(window,'scroll',onScroll);
+      periodicalExecuter = new PeriodicalExecuter(doWeNeedMoreContent,1);
       return this;
     },
     
     stop: function(){
       if (!running) return;
       running = false;
-      Event.stopObserving(window,'scroll',onScroll);
+      periodicalExecuter.stop();
       return this;
     },
-    
-    nearBottomOfPage: function(){
-      return scrollDistanceFromBottom() < EndlessPage.distanceFromBottom;
-    },
-    
+
     observe: function(event,handler){
       Element.observe(eventElement,'EndlessPage:'+event,handler)
       return this;
@@ -47,17 +51,42 @@ var EndlessPage;
     stopObserving: function(event, handler){
       Event.stopObserving(eventElement,event,handler);
       return this;
+    },
+    
+    loadMoreContent: function(){
+      this.stop();
+      new Ajax.Request(this.url, {
+        parameters: Object.toQueryString({
+          page: (this.currentPage += 1)
+        }),
+        asynchronous:true, 
+        evalScripts:true, 
+        method:'get'
+      });
+      return this;
     }
+
   }
   
-  function onScroll(event){
-    if ( EndlessPage.nearBottomOfPage() ) {
-      Element.fire(eventElement,'EndlessPage:nearBottom');
+  function doWeNeedMoreContent(event){
+    if ( Try.these.apply(this, EndlessPage.conditions) ) {
+      periodicalExecuter.stop();
+      EndlessPage.loadMoreContent();
+      eventElement.fire('EndlessPage:nearBottom')
     };
   };
   
-  function scrollDistanceFromBottom(argument) {
-    return pageHeight() - (window.pageYOffset + window.innerHeight);
+  function windowIsTallerThenLoadedContent() {
+    return (window.scrollMaxY <= 0)
+  };
+    
+  function nearBottomOfPage(){
+    return scrollDistanceFromBottom() < EndlessPage.distanceFromBottom;
+  };
+  
+  function scrollDistanceFromBottom() {
+    return window.scrollMaxY - window.scrollY;
+    // return pageHeight() - (window.pageYOffset + window.innerHeight);
   };
 
   function pageHeight() {
