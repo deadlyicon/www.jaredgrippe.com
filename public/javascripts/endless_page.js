@@ -5,8 +5,8 @@
 
 // Window Events
 //  nearBottom
-//  fullLoaded
-//  nearBottom
+//  fullyLoaded  //TODO
+//  nearBottom   //TODO
 
 var EndlessPage;
 
@@ -18,7 +18,8 @@ var EndlessPage;
   ;
 
   EndlessPage = {
-    totalPages: null, // If null page requests stop after first "records not found error" response
+    contentElement: document.body,
+    totalPages: null, // TODO If null page requests stop after first "records not found error" response
     currentPage: 1,
     onLoad: true, // If set to false EndlessPage does not start on load
     distanceFromBottom: 150,
@@ -69,7 +70,9 @@ var EndlessPage;
   }
   
   function doWeNeedMoreContent(event){
+    // console.log("checking");
     if ( Try.these.apply(this, EndlessPage.conditions) ) {
+      // console.log("loading");
       periodicalExecuter.stop();
       EndlessPage.loadMoreContent();
       eventElement.fire('EndlessPage:nearBottom')
@@ -85,8 +88,7 @@ var EndlessPage;
   };
   
   function scrollDistanceFromBottom() {
-    return window.scrollMaxY - window.scrollY;
-    // return pageHeight() - (window.pageYOffset + window.innerHeight);
+    return pageHeight() - (window.pageYOffset + window.innerHeight);
   };
 
   function pageHeight() {
@@ -94,8 +96,8 @@ var EndlessPage;
   };
   
   
-  
   Event.observe(window,'dom:loaded',function(){
+    console.log("dom loaded");
     if (EndlessPage.onLoad) EndlessPage.start();
   });
   
