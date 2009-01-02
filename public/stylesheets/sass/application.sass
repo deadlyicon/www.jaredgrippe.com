@@ -1,0 +1,223 @@
+// Colors
+!main_text_color      = white
+!flash_notice_color   = #89BDFF
+!flash_warning_color  = #E3A336
+!flash_error_color    = #E23D27
+!orange_text = #FF6633
+!blue_text = #89BDFF
+!brown_text = #9B5C2E
+
+html,body
+  :border 0
+  :padding 0
+  :margin 0
+
+body
+  :overflow-y  scroll
+  :font  normal normal normal 90% Trebuchet MS, Trebuchet
+  :color  white
+
+a
+  :color = !orange_text
+  :text-decoration none
+  :padding 0 1px
+  &:visited
+    :color = !orange_text
+  &:hover
+    :background-color = !orange_text
+    :color #001A47
+
+
+
+
+// Layout
+page
+  :position relative
+
+.column
+  :position relative
+  :width 955px
+  :margin 0 auto
+
+#fixed-background
+  :position fixed
+  :top 0
+  :left 0
+  :bottom 0
+  :right 0
+  :background #000418 url(../images/godrays.gif) no-repeat fixed center center
+  
+  .background
+    :height 100%
+    :background-color black
+    :opacity 0.80
+    :-moz-opacity 0.80
+  //:filteralpha(opacity=80)
+
+#controls 
+  :position absolute
+  :top 0.5em
+  :right 1em
+  :font-size 90%
+  :color #9B5C2E
+  a
+    :margin-left 0.5em
+
+#content
+  :padding 0.5em 3em 0.5em 1em
+
+
+
+.indent 
+  :margin-left 1em 
+
+
+
+
+// Navigation Styles
+#nav
+  :position absolute
+  :top 19px
+  :right -35px
+  :margin 0
+  :padding 0
+
+  &, li
+    :list-style-type none
+    :list-style none inside
+
+  li
+    :display block
+    :width 35px
+    :background url('../images/nav/button/background/top.png') no-repeat scroll top left
+    :margin-bottom 10px
+    :padding 9px 0 0 0
+    a
+      :display block
+      :width 35px
+      :background url('../images/nav/button/background/bottom.png') no-repeat scroll bottom left
+      :padding 0 0 9px 0
+      div
+        :background-color black
+
+  li.aboutme a div
+    :background black url('../images/nav/button/aboutme.png') no-repeat scroll 9px 0px
+    :height 76px
+
+  li.twitter a div
+    :background black url('../images/nav/button/twitter.png') no-repeat scroll 3px 0px
+    :height 26px
+
+  li.postsfeed a div
+    :background black url('../images/nav/button/rss.png') no-repeat scroll 3px 0px
+    :height 25px
+
+// === FLASH MESSAGES ===
+.flash
+  :text-align center
+  .notice
+    :color = !flash_notice_color 
+  .warning
+    :color = !flash_warning_color
+  .error
+    :color = !flash_error_color  
+
+
+  
+// === ERROR MESSAGES === 
+div
+  #errorExplanation
+    h2
+    p
+    ul
+      li
+
+
+  .fieldWithErrors
+    label
+    input, select, textarea
+
+
+
+
+
+// Simulating TextMate Sunburst Theme
+
+.ruby
+  :font-size = 19px
+  
+  a, a:hover, .input
+    :color inherit
+    :background inherit
+
+  &.keyword, &.keyword *
+    :color = !orange_text
+
+  &.entity, &.entity *, &.entity-name
+    :color = !blue_text
+
+  &.inherited, &.inherited *
+    :color = !brown_text
+
+
+
+// === Post ===
+
+.post
+  :text-align justify
+  img
+    :margin 0.5em
+  .title
+    input
+      :background transparent
+      :border none
+  .controls
+    :font-size 50%
+  
+// .body
+//   a
+//     &, &:visited
+//       :color = !blue_text
+//       :text-decoration none
+//     &:hover
+//       :color black
+//       :background = !blue_text
+
+      
+  input[type="submit"]
+    :border none
+    :float right
+    :margin 0
+    :padding 0
+    :position relative
+    :top -1.5em
+    :background transparent
+  #loading_posts
+    :color #89BDFF
+    :font-weight bold
+  .tags, .tags .ruby
+    :font-size 12px
+  .tags
+    .tag
+      :color = !blue_text
+      :padding 0 2px
+      &:visited
+        :color = !blue_text
+      &:hover
+        :color = !blue_text
+        :background transparent
+        //:background = !blue_text
+        //:color black
+        
+
+// === List of Posts ===
+#posts
+  .post
+    :margin 2.5em 0
+    .controls
+      .back
+        :display none
+
+// Post WYSIWYG editor
+#PostEditor
+  :background transparent
