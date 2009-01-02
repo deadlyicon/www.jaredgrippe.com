@@ -10,7 +10,7 @@ html{
 }
 body{
   width: 100%;
-  height: 100%; /* TODO find another way to do this */ 
+  height: 100%;
   background: #0066ff url(../images/godrays.gif) no-repeat fixed center center;
   overflow-y: scroll;
   font: normal normal normal 90% Trebuchet MS, Trebuchet;
@@ -57,6 +57,7 @@ a:hover{
   width: 955px;
   margin: 0 auto;
   min-height: 100%;
+/*  height: 100%;*/
 }
 
 #page-background{
@@ -66,9 +67,9 @@ a:hover{
   min-width: 100%;
   min-height: 100%;
   background: #000;
-  opacity: 0.90;
-  -moz-opacity: 0.90;
-  filter:alpha(opacity=90);
+  opacity: 0.80;
+  -moz-opacity: 0.80;
+  filter:alpha(opacity=80);
   z-index: -1;
 }
 
