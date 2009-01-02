@@ -25,4 +25,14 @@ module ApplicationHelper
     content_for( :head, capture(&block) )
   end
   
+  def nav_button(classname, url, &block)
+    concat <<-HTML
+    <li class="#{classname}">
+      <a href="#{url}">
+        <div>#{block_given? ? capture(&block) : ''}</div>
+      </a>
+    </li>
+    HTML
+  end
+  
 end

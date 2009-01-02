@@ -48,7 +48,7 @@ a:hover{
 #page{
   position: relative;
 }
-#page-background{
+#fixed-background{
   position: fixed;
   top: 0;
   left: 0;
@@ -56,12 +56,12 @@ a:hover{
   right: 0;
   background: #000418 url(../images/godrays.gif) no-repeat fixed center center;
 }
-#page,
-#page-background .background{
+.column{
+  position: relative;
   width: 955px;
   margin: 0 auto;
 }
-#page-background .background{
+#fixed-background .background{
   height: 100%;
   background-color: black;
   opacity: 0.80;
@@ -86,6 +86,46 @@ a:hover{
 
 
 
+/* Navigation Styles */
+#nav{
+  position: absolute;
+  top: 19px;
+  right: -35px;
+  margin: 0;
+  padding: 0;
+}
+#nav, #nav li{
+  list-style-type: none;
+  list-style: none inside;
+}
+#nav li{
+  display: block;
+  width: 35px;
+  background: url('../images/nav/button/background/top.png') no-repeat scroll top left;
+  margin-bottom: 10px;
+  padding: 9px 0 0 0;
+}
+#nav li a{
+  display: block;
+  width: 35px;
+  background: url('../images/nav/button/background/bottom.png') no-repeat scroll bottom left;
+  padding: 0 0 9px 0;
+}
+#nav li a div{
+  background-color: black;
+}
+#nav li.aboutme a div{
+  background: black url('../images/nav/button/aboutme.png') no-repeat scroll 9px 0px;
+  height: 76px;
+}
+#nav li.twitter a div{
+  background: black url('../images/nav/button/twitter.png') no-repeat scroll 3px 0px;
+  height: 26px;
+}
+#nav li.postsfeed a div{
+  background: black url('../images/nav/button/rss.png') no-repeat scroll 3px 0px;
+  height: 25px;
+}
 
 
 /* === FLASH MESSAGES === */
@@ -176,6 +216,11 @@ div.fieldWithErrors textarea
 
 #PostEditor{
   background: transparent;
+}
+
+#loading_posts{
+  color: #89BDFF;
+  font-weight: bold;
 }
 
 

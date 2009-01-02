@@ -17,6 +17,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :passwords
   map.resource  :session
   
+  map.about_me '/aboutme', :controller => 'aboutme'
   
   # Home Page
   map.root :controller => 'application', :action => 'redirect', :destination => { :controller => 'posts' }

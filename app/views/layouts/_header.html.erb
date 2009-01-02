@@ -18,11 +18,14 @@
 		<%= yield :head %>
 	</head>
 	<body>
-	  <div id="page-background">
-	    <div class="background"></div>
+	  
+	  <div id="fixed-background">
+	    <div class="column background">
+        <%= render :partial => 'layouts/nav' %>
+	    </div>	
 	  </div>
-		<div id="page">
-		  
+	  
+		<div id="page" class="column">
 		  
 			<div id="controls">
         <% if logged_in? %>

@@ -44,7 +44,7 @@ module EndlessPageHelper
     concat "\n"
     concat content_tag(:div, content, :id => opts[:collection_name])
     concat "\n"
-    concat content_tag(:div, 'Loading...', :id => "loading_#{opts[:collection_name]}")
+    concat content_tag(:div, "Loading more #{opts[:collection_name]}...", :id => "loading_#{opts[:collection_name]}")
     ''
   end
   
