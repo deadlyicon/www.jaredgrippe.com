@@ -1,0 +1,9 @@
+!!! XML
+!!!
+%html
+  %head
+    = render :partial => 'layouts/headers'
+    = yield :head
+  %body
+    - render :layout => 'layouts/application' do
+      = yield :layout

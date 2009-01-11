@@ -1,0 +1,25 @@
+= javascript_include_tag 'fckeditor/fckeditor'
+- form_for(post) do |f|
+  = f.error_messages
+  #post.post
+    - #this extra div is needed for the CSS :before and :after filters to work in Safari
+    %div 
+      .title
+        = link_to post.title, post
+      .tags
+        %div
+          - post.tags.map do |tag|
+            %a.tag{ :href => "/posts/tag/#{tag}" }= tag
+      .body
+        = f.text_area :body
+        :javascript
+          Event.observe(window,'load',function(event){
+            var e = window.postBodyEditor = new FCKeditor('post_body');
+            e.BasePath = "/javascripts/fckeditor/";
+            e.Height = 600;
+            e.Config["CustomConfigurationsPath"] = "/javascripts/fckeditor/configs/post_edit.js"+'?'+( new Date() * 1 ); //TODO remove me!
+            e.ReplaceTextarea();
+          });
+
+      .controls
+        = submit_tag 'Save'

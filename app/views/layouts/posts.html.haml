@@ -1,0 +1,20 @@
+!!! XML
+!!!
+%html
+  %head
+    = render :partial => 'layouts/headers'
+    = yield :head
+  %body
+    - render :layout => 'layouts/application' do
+      %h1
+        %span.ruby.keyword
+          class
+        %span.ruby.entity-name
+          = link_to 'JaredGrippe', root_path
+        %span.ruby.inherited
+          &lt; Programmer
+      / = yield :layout
+      = yield :layout
+      %h1
+        %span.ruby.keyword
+          end
