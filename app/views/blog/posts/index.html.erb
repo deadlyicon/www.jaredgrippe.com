@@ -1,6 +1,6 @@
 <% title 'posts' %>
 
-<% endless_page_for @posts %>
+<% endless_page_for @posts, :render => { :partial => '/blog/posts/post', :collection => @posts } %>
 
 <% if current_user_is_an_admin? %>
   <%= link_to 'Post.new', new_post_path %>

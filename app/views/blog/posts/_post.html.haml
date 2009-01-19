@@ -6,7 +6,7 @@
     .tags
       %div
         - post.tags.map do |tag|
-          = "<a class=\"tag\" href=\"/posts/tag/#{tag}\"><span>#{tag}</span></a>"
+          = "<a class=\"tag\" href=\"#{blog_tag_path(tag)}\"><span>#{tag}</span></a>"
     .body
       = @preview ? post.preview : post.body
     - if current_user_is_an_admin?

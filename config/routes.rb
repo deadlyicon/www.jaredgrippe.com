@@ -12,7 +12,11 @@ ActionController::Routing::Routes.draw do |map|
   map.open_id_create '/opencreate', :controller => "users", :action => "create", :requirements => { :method => :get }
   
   # Restful Authentication Resources
-  map.resources :posts
+
+  # map.blog '/blog', :controller => 'blog'
+  map.with_options(:path_prefix => "blog", :namespace => "blog/", :name_prefix => "blog_") do |blog|
+    blog.resources :posts, :tags#, :has_many => [:tags, :comments, :attachments]
+  end
   map.resources :users
   map.resources :passwords
   map.resource  :session

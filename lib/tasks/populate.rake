@@ -8,7 +8,7 @@ namespace :db do
     
     data = []
     100.times do
-      title = Faker::Lorem.sentence( rand(6) + 2 )
+      title = Faker::Lorem.sentence( rand(4) + 2 )
       body = <<-BODY
         <p>#{Faker::Lorem.paragraphs( rand(4) + 1 ).join("</p>\n<p>")}</p>
         #{Post::PREVIEW_BREAK}
@@ -20,5 +20,11 @@ namespace :db do
     Post::PREVIEW_BREAK
       
     Post.import [:title, :body], data, :validate => false
+    
+    Post.all.each do |post|
+      post.tag_list = Faker::Lorem.words( rand(6) + 2 ).join(", ")
+      post.save
+    end
+    
   end
 end
