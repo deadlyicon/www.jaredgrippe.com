@@ -1,0 +1,114 @@
+@import _common.sass
+
+body.posts 
+  h1.title 
+    a
+      :color = !blue_text
+      :word-spacing -5px
+    span:before
+      :content "class"
+      :color = !orange_text
+    span:after
+      :content "< Programmer"
+      :color = !brown_text
+
+
+.post
+  :text-align justify
+  :margin 1em 0 0 1em
+  img
+    :margin 0.5em
+    
+  .title
+    :font-size = !large_text_size
+    & div:before
+      :content "posts "
+      :color white
+    a
+      :color = !green_text
+      &:before
+        :content "\""
+      &:after
+        :content "\""
+    & div:after
+      :content " do"
+      :color = !orange_text
+    input
+      :background transparent
+      :border none
+  .controls
+    :font-size 50%
+    
+  .body
+    :overflow hidden
+    :margin-left 1em
+      
+  input[type="submit"]
+    :border none
+    :float right
+    :margin 0
+    :padding 0
+    :position relative
+    :top -1.5em
+    :background transparent
+
+  #loading_posts
+    :color #89BDFF
+    :font-weight bold
+
+  .tags, .tags .ruby
+    :font-size 12px
+  .tags:before
+    :content 'TAGS'
+    :color = !blue_text
+  .tags
+    :display inline
+    :margin-left 1em
+    div
+      :display inline
+    div:before
+      :content ' = '
+      :color = !brown_text
+    .tag
+      :color = !blue_text
+      :padding 0 2px
+    .tag:first-child:before
+      :content "[ "
+      :color white
+    .tag:last-child:after
+      :content " ]"
+      :color white
+    .tag span
+      &:before
+        :content ":"
+      &:after
+        :content ","
+        :color white
+    .tag:last-child span:after
+      :content ""
+    .tag:visited
+      :color = !blue_text
+    .tag:hover
+      :color = !blue_text
+      :background transparent
+   
+.post:after
+  :font-size = !large_text_size
+  :content "end"
+  :color = !orange_text
+        
+
+// === List of Posts ===
+#posts
+  :margin-left 1em
+  .post:first-child
+    :margin-top 1em
+  .post
+    :margin 2.5em 0
+    .controls
+      .back
+        :display none
+
+// Post WYSIWYG editor
+#PostEditor
+  :background transparent

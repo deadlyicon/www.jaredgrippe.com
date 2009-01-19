@@ -1,24 +1,15 @@
-<div class="post">
-  <div class="title">
-    <span class="ruby keyword">def</span>
-    <span class="ruby entity"><%= link_to post.title.camelcase, post %></span>
-    <span class="ruby inherited">&lt; <%= link_to 'Post', posts_path %></span>
-  </div>
-  <div class="tags">
-    <span class="ruby entity">TAGS</span> 
-    <span class="ruby keyword">=</span>
-    [ <%= ['tag1','tag2', 'wtf', 'awesome'].map{|tag| "<a href=\"/posts/tag/#{tag}\" class=\"ruby entity tag\">:#{tag}</a>" }.join(', ') %> ]
-  </div>
-  <div class="body"><%= @preview ? post.preview : post.body %></div>  
-  <div>
-    <span class="ruby keyword">
-      end
-      <% if current_user_is_an_admin? %>
-        <span class="controls">
-          <%= link_to 'Edit', edit_post_path(post), :class => 'edit' %>
-          <%= link_to 'Back', posts_path, :class => 'back' %>
-        </span>
-      <% end %>
-    </span>
-  </div>
-</div>
+.post
+  %div
+    .title
+      %div
+        = link_to post.title, post
+    .tags
+      %div
+        - post.tags.map do |tag|
+          = "<a class=\"tag\" href=\"/posts/tag/#{tag}\"><span>#{tag}</span></a>"
+    .body
+      = @preview ? post.preview : post.body
+    - if current_user_is_an_admin?
+      %span.controls
+        = link_to 'Edit', edit_post_path(post), :class => 'edit'
+        = link_to 'Back', posts_path, :class => 'back'

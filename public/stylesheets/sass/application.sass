@@ -1,11 +1,4 @@
-// Colors
-!main_text_color      = white
-!flash_notice_color   = #89BDFF
-!flash_warning_color  = #E3A336
-!flash_error_color    = #E23D27
-!orange_text = #FF6633
-!blue_text = #89BDFF
-!brown_text = #9B5C2E
+@import _common.sass
 
 html,body
   :border 0
@@ -14,8 +7,11 @@ html,body
 
 body
   :overflow-y  scroll
-  :font  normal normal normal 90% Trebuchet MS, Trebuchet
-  :color  white
+  :font normal normal normal 90% Trebuchet MS, Trebuchet
+  :color = !normal_text_color
+  :font-weight ligher
+  :letter-spacing 1px
+  :font-size = !normal_text_size
 
 a
   :color = !orange_text
@@ -23,11 +19,6 @@ a
   :padding 0 1px
   &:visited
     :color = !orange_text
-  &:hover
-    :background-color = !orange_text
-    :color #001A47
-
-
 
 
 // Layout
@@ -72,7 +63,8 @@ page
   :margin-left 1em 
 
 h1
-  :font-size 19px
+  :font-weight lighter
+  :font-size = !large_text_size
   :margin 0
 
 
@@ -161,70 +153,3 @@ div
     :color = !brown_text
 
 
-
-// === Post ===
-
-.post
-  :text-align justify
-  img
-    :margin 0.5em
-  .title
-    :font-size 19px
-    input
-      :background transparent
-      :border none
-  .controls
-    :font-size 50%
-  
-  .body
-    :overflow hidden
-    :margin-left 1em
-//   a
-//     &, &:visited
-//       :color = !blue_text
-//       :text-decoration none
-//     &:hover
-//       :color black
-//       :background = !blue_text
-
-      
-  input[type="submit"]
-    :border none
-    :float right
-    :margin 0
-    :padding 0
-    :position relative
-    :top -1.5em
-    :background transparent
-  #loading_posts
-    :color #89BDFF
-    :font-weight bold
-  .tags, .tags .ruby
-    :font-size 12px
-  .tags
-    :margin-left 1em
-    .tag
-      :color = !blue_text
-      :padding 0 2px
-      &:visited
-        :color = !blue_text
-      &:hover
-        :color = !blue_text
-        :background transparent
-        //:background = !blue_text
-        //:color black
-        
-
-// === List of Posts ===
-#posts
-  .post:first-child
-    :margin-top 0
-  .post
-    :margin 2.5em 0
-    .controls
-      .back
-        :display none
-
-// Post WYSIWYG editor
-#PostEditor
-  :background transparent

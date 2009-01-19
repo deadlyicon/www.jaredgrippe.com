@@ -19,4 +19,8 @@ class Post < ActiveRecord::Base
     read_attribute(:body).split(PREVIEW_BREAK).first.chomp
   end
   
+  def tags
+    [:fuck,:git,:and,:dgos]
+  end
+  
 end
