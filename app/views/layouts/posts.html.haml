@@ -6,8 +6,5 @@
     = stylesheet_link_tag 'posts', :cache => false
     = yield :head
   %body.posts
-    - render :layout => 'layouts/application' do
-      %h1.title
-        %span
-          = link_to 'Jared Grippe', root_path
+    - render :layout => 'layouts/common' do
       = yield :layout

@@ -132,7 +132,22 @@ div
     input, select, textarea
 
 
-
+// === Site Title ===
+body
+  h1.title 
+    a
+      :color = !blue_text
+      :word-spacing -5px
+    span:before
+      :content "class"
+      :color = !orange_text
+    span:after
+      :content "< Programmer"
+      :color = !brown_text
+#content > div:after
+  :content "end"
+  :color = !orange_text
+  :font-size = !large_text_size
 
 
 // Simulating TextMate Sunburst Theme
