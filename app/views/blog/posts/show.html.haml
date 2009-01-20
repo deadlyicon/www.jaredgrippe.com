@@ -1,0 +1,4 @@
+- head do
+  - stylesheet_link_tag 'post'
+- title @post.title
+= render :partial => '/blog/posts/post', :object => @post

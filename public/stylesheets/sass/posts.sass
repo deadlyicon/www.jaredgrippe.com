@@ -11,7 +11,7 @@
     & div:before
       :content "posts "
       :color white
-    a
+    a,input
       :color = !green_text
       &:before
         :content "\""
@@ -76,6 +76,7 @@
     .tag:visited
       :color = !blue_text
     .tag:hover
+      :text-decoration none
       :color = !blue_text
       :background transparent
    
@@ -95,6 +96,8 @@
     .controls
       .back
         :display none
+#loading_posts
+  :margin-left 1em
 
 // Post WYSIWYG editor
 #PostEditor

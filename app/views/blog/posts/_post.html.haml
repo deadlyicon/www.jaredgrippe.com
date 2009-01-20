@@ -11,5 +11,5 @@
       = @preview ? post.preview : post.body
     - if current_user_is_an_admin?
       %span.controls
-        = link_to 'Edit', edit_post_path(post), :class => 'edit'
-        = link_to 'Back', posts_path, :class => 'back'
+        = link_to 'Edit', edit_blog_post_path(post), :class => 'edit'
+        = link_to 'Back', blog_posts_path, :class => 'back'

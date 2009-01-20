@@ -1,6 +1,11 @@
 module JavascriptHelper
   
 
+  # TODO
+  #   change this to wrap javascript_tag and accepts options
+  #     :anonymous => true
+  #     :on => :load | :dom-ready | :etc
+  #
   def javascript_anonymous_tag(content_or_options_with_block = nil, html_options = {}, &block)
     content =
       if block_given?

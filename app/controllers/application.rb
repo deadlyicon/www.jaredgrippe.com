@@ -31,4 +31,4 @@ class ApplicationController < ActionController::Base
     Sass::Plugin.update_stylesheets
   end
 end
-
+::LOGGER = ApplicationController.logger

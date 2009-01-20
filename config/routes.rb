@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   # Restful Authentication Resources
 
   # map.blog '/blog', :controller => 'blog'
+  # TODO fix the damn blog/blog/posts/_post.erb auto bug BS
   map.with_options(:path_prefix => "blog", :namespace => "blog/", :name_prefix => "blog_") do |blog|
     blog.resources :posts, :tags#, :has_many => [:tags, :comments, :attachments]
   end
@@ -24,7 +25,7 @@ ActionController::Routing::Routes.draw do |map|
   map.about_me '/aboutme', :controller => 'aboutme'
   
   # Home Page
-  map.root :controller => 'application', :action => 'redirect', :destination => { :controller => 'posts' }
+  map.root :controller => 'application', :action => 'redirect', :destination => { :controller => 'blog/posts' }
 
   # Install the default routes as the lowest priority.
   map.connect ':controller/:action/:id'
