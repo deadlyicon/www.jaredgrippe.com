@@ -19,3 +19,5 @@ config.action_mailer.raise_delivery_errors = false
 # Restful Authentication
 REST_AUTH_SITE_KEY = 'f5902f84d352e5bf21a3de85645d1c7fe3fec887'
 REST_AUTH_DIGEST_STRETCHES = 10
+
+JS::ENV['verbose'] = true

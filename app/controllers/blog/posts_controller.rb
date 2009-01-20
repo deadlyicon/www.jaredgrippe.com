@@ -4,7 +4,6 @@ module Blog
     # GET /posts.xml
     def index
       @posts = Post.paginate(:page => params[:page], :per_page => 5)
-      @preview = true
     
       respond_to do |format|
         format.html # index.html.erb
@@ -18,7 +17,9 @@ module Blog
     # GET /posts/1
     # GET /posts/1.xml
     def show
-      @post = Post.find(params[:id])
+      date = Date.parse("#{params[:year]}/#{params[:month]}/#{params[:day]}")
+      # TODO make this search by the created_at date as well
+      @post = Post.find_by_title_slug(params[:title_slug])
 
       respond_to do |format|
         format.html # show.html.erb
@@ -69,7 +70,7 @@ module Blog
       @post = Post.find(params[:id])
 
       respond_to do |format|
-        if @post.update_attributes(params[:post])
+        if @post.update_attributes(params[:blog_post])
           flash[:notice] = 'Post was successfully updated.'
           format.html { redirect_to(@post) }
           format.xml  { head :ok }

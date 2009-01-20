@@ -9,7 +9,9 @@
           = "<a class=\"tag\" href=\"#{blog_tag_path(tag)}\"><span>#{tag}</span></a>"
     .body
       = @preview ? post.preview : post.body
-    - if current_user_is_an_admin?
-      %span.controls
-        = link_to 'Edit', edit_blog_post_path(post), :class => 'edit'
-        = link_to 'Back', blog_posts_path, :class => 'back'
+      
+  - if current_user_is_an_admin?
+    .controls
+      = link_to 'Edit', edit_blog_post_path(post), :class => :edit
+      = link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete, :class => :delete
+      = link_to 'Back', blog_posts_path, :class => :back

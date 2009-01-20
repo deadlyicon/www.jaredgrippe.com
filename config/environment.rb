@@ -9,6 +9,13 @@ if ENV['RAILS_ENV'] == 'production'
   ENV['GEM_PATH'] = '/usr/lib/ruby/gems/1.8:/home/deadlyicon/.gems'
 end
 
+# Initializing this here so other environments can affect the Javascript Environment vars
+module JS
+  ENV = {}
+end
+
+JS::ENV['environment'] = ENV['RAILS_ENV']
+
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
 

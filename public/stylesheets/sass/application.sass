@@ -50,7 +50,7 @@ page
   :top 0.5em
   :right 1em
   :font-size 90%
-  :color #9B5C2E
+  :color = !blue_text
   a
     :margin-left 0.5em
 
@@ -109,11 +109,11 @@ h1
 // === FLASH MESSAGES ===
 .flash
   :text-align center
-  .notice
+  &.notice
     :color = !flash_notice_color 
-  .warning
+  &.warning
     :color = !flash_warning_color
-  .error
+  &.error
     :color = !flash_error_color  
 
 

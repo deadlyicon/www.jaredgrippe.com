@@ -36,12 +36,12 @@ module EndlessPageHelper
         
     concat javascript_include_tag( 'endless_page' )
     concat "\n"
-    concat javascript_anonymous_tag( <<-SCRIPT
+    concat javascript_tag((<<-SCRIPT
       EndlessPage.contentElementId = $('#{opts[:collection_name]}');
       EndlessPage.totalPages = #{collection.total_pages};
       EndlessPage.url = '#{url_for(collection.first.class.new)}.js';
     SCRIPT
-    )
+    ), :anonymous => true)
     concat "\n"
     concat content_tag(:div, content, :id => opts[:collection_name])
     concat "\n"

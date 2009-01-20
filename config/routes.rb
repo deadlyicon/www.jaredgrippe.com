@@ -16,7 +16,9 @@ ActionController::Routing::Routes.draw do |map|
   # map.blog '/blog', :controller => 'blog'
   # TODO fix the damn blog/blog/posts/_post.erb auto bug BS
   map.with_options(:path_prefix => "blog", :namespace => "blog/", :name_prefix => "blog_") do |blog|
-    blog.resources :posts, :tags#, :has_many => [:tags, :comments, :attachments]
+    blog.connect "posts/:year/:month/:day/:title_slug", :controller => 'posts', :action => 'show'
+    blog.resources :posts 
+    blog.resources :tags
   end
   map.resources :users
   map.resources :passwords
