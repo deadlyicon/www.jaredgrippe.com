@@ -1,11 +1,20 @@
 module Blog
   class Post < ActiveRecord::Base
 
+    class << self
+      # 
+      # def find(*args)
+      #   if args.first.match(/^\n+\/\n+\/\n+\/.*/)
+      #   
+      # end
+      
+    end
+
     acts_as_taggable
 
     # TODO fix this, maybe just validate?
-    def before_save
-      title_slug = title.parameterize
+    before_save do |post|
+      post.write_attribute(:slug, "#{post.year}/#{post.month}/#{post.day}/#{post.title.to_slug}")
     end
 
     module Title
@@ -15,26 +24,40 @@ module Blog
       def camelize
         gsub(/\s+/,'_').camelcase
       end
+      def to_slug
+        parameterize
+      end
     end
 
     def title
-      read_attribute(:title).extend(Title)
+      read_attribute(:title).clone.extend(Title)
     end
     
-    def title=(new_title)
-      write_attribute(:title, new_title)
-      write_attribute(:title_slug, new_title.parameterize.to_s)
+    def slug=(*args)
     end
-
+    
+    def to_param
+      slug
+    end
+    
+    def year
+      created_at.year
+    end
+    def month
+      created_at.month
+    end
+    def day
+      created_at.day
+    end
+    
+    # TODO make this a Regex
     PREVIEW_BREAK = '<div style="page-break-after: always; ">'
 
     def preview
       read_attribute(:body).split(PREVIEW_BREAK).first.chomp
     end
     
-    def to_param
-      "#{created_at.year}/#{created_at.month}/#{created_at.day}/#{title_slug}"
-    end
+
 
   end
 end

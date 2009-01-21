@@ -16,15 +16,25 @@ module Blog
 
     # GET /posts/1
     # GET /posts/1.xml
+    # GET /posts/2009/1/21/the-post-title
+    # GET /posts/2009/1/21/the-post-title.xml
     def show
-      date = Date.parse("#{params[:year]}/#{params[:month]}/#{params[:day]}")
-      # TODO make this search by the created_at date as well
-      @post = Post.find_by_title_slug(params[:title_slug])
+      if params[:slug]
+        @post = Post.find_by_slug(params[:slug].join('/'))
+      elsif params[:id]
+        @post = Post.find_by_id(params[:id])
+      end
 
       respond_to do |format|
-        format.html # show.html.erb
-        format.xml  { render :xml => @post }
-        format.json { render :json => @post }
+        if @post
+          format.html # show.html.erb
+          format.xml  { render :xml => @post }
+          format.json { render :json => @post }
+        else
+          format.html { render :text => '404', :status => 404 }
+          format.xml  { render :xml => '404', :status => 404 }
+          format.json { render :json => '404', :status => 404 }
+        end
       end
     end
 

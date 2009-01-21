@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20090119102842) do
 
   create_table "posts", :force => true do |t|
     t.string   "title"
-    t.string   "title_slug"
+    t.string   "slug"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"

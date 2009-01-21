@@ -11,15 +11,26 @@ ActionController::Routing::Routes.draw do |map|
   map.open_id_complete '/opensession', :controller => "sessions", :action => "create", :requirements => { :method => :get }
   map.open_id_create '/opencreate', :controller => "users", :action => "create", :requirements => { :method => :get }
   
-  # Restful Authentication Resources
+  
+  
+  # map.blog_post '/blog/posts/*slug', :controller => 'blog/posts', :action => 'show', :conditions => { :method => :get }  
+  # map.blog_post '/blog/posts/:year/:month/:day/:title_slug', :controller => 'blog/posts', :action => 'show', :conditions => { :method => :get }  
+  # map.formatted_blog_post '/blog/posts/:year/:month/:day/:title_slug.:format', :controller => 'blog/posts', :action => 'show', :conditions => { :method => :get }  
+  # map.connect '/blog/posts/:year/:month/:day/:title_slug', :controller => 'blog/posts', :action => 'show', :conditions => { :method => :get }  
+  # map.connect '/blog/posts/:year/:month/:day/:title_slug.:format', :controller => 'blog/posts', :action => 'show', :conditions => { :method => :get }  
 
   # map.blog '/blog', :controller => 'blog'
   # TODO fix the damn blog/blog/posts/_post.erb auto bug BS
   map.with_options(:path_prefix => "blog", :namespace => "blog/", :name_prefix => "blog_") do |blog|
-    blog.connect "posts/:year/:month/:day/:title_slug", :controller => 'posts', :action => 'show'
-    blog.resources :posts 
+    blog.resources :posts
     blog.resources :tags
   end
+
+  map.blog_post '/blog/posts/*slug', :controller => 'blog/posts', :action => 'show', :conditions => { :method => :get }  
+  map.formatted_blog_post '/blog/posts/*slug.:format', :controller => 'blog/posts', :action => 'show', :conditions => { :method => :get }  
+  
+
+  
   map.resources :users
   map.resources :passwords
   map.resource  :session
@@ -27,8 +38,11 @@ ActionController::Routing::Routes.draw do |map|
   map.about_me '/aboutme', :controller => 'aboutme'
   
   # Home Page
-  map.root :controller => 'application', :action => 'redirect', :destination => { :controller => 'blog/posts' }
-
+  map.blog '/blog', :controller => 'application', :action => 'redirect', :destination => { 
+      :controller => 'blog/posts', :action => 'index'}
+  map.root :controller => 'application', :action => 'redirect', :destination => {
+      :controller => 'blog/posts', :action => 'index'}
+      
   # Install the default routes as the lowest priority.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
