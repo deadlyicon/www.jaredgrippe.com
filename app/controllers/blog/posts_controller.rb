@@ -1,5 +1,8 @@
 module Blog
   class PostsController < ApplicationController
+    
+    #TODO add auth before filters
+    
     # GET /posts
     # GET /posts.xml
     def index
@@ -22,7 +25,10 @@ module Blog
       if params[:slug]
         @post = Post.find_by_slug(params[:slug].join('/'))
       elsif params[:id]
-        @post = Post.find_by_id(params[:id])
+        unless @post = Post.find_by_id(params[:id])
+          #render 404
+        end
+        redirect_to blog_post_url(@post)
       end
 
       respond_to do |format|

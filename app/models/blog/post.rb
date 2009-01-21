@@ -2,6 +2,10 @@ module Blog
   class Post < ActiveRecord::Base
 
     class << self
+      
+      def to_s
+        class_name
+      end
       # 
       # def find(*args)
       #   if args.first.match(/^\n+\/\n+\/\n+\/.*/)
