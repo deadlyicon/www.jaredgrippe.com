@@ -1,0 +1,8 @@
+@posts.each do |post|
+  page.insert_html :bottom, :posts, :partial => '/blog/posts/post', :object => post, :locals => { :preview => true }
+end
+if @posts.total_pages > @posts.current_page
+  page.call 'EndlessPage.start'
+else
+  page[:loading_posts].hide
+end

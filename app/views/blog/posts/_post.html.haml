@@ -2,13 +2,13 @@
   %div
     .title
       %div
-        = link_to post.title, post
+        = link_to post.title, blog_post_path(post)
     .tags
       %div
         - post.tags.map do |tag|
           = "<a class=\"tag\" href=\"#{blog_tag_path(tag)}\"><span>#{tag}</span></a>"
     .body
-      = @preview ? post.preview : post.body
+      = (defined?(preview) and preview) ? post.preview : post.body
       
   - if current_user_is_an_admin?
     .controls

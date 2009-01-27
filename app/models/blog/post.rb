@@ -37,13 +37,14 @@ module Blog
       read_attribute(:title).clone.extend(Title)
     end
     
-    def slug=(*args)
-    end
+    # def slug=(*args)
+    #   raise ArgumentError, 'slugs are generated '
+    # end
     
-    def to_param
-      slug
-    end
-    
+    # def to_param
+    #   slug
+    # end
+    # 
     def year
       created_at.year
     end
@@ -55,10 +56,10 @@ module Blog
     end
     
     # TODO make this a Regex
-    PREVIEW_BREAK = '<div style="page-break-after: always; ">'
+    PREVIEW_BREAKER = /<div\s+[^>]*style="[^"]*page-break-after:\s*always;[^"]*"[^>]*>/
 
     def preview
-      read_attribute(:body).split(PREVIEW_BREAK).first.chomp
+      body.split(PREVIEW_BREAKER).first
     end
     
 

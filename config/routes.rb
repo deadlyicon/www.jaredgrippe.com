@@ -18,6 +18,8 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.formatted_blog_post '/blog/posts/*slug.:format', :controller => 'blog/posts', :action => 'show', :conditions => { :method => :get }  
   map.blog_post '/blog/posts/*slug', :controller => 'blog/posts', :action => 'show', :conditions => { :method => :get }  
+  # map.formatted_blog_tag '/blog/tags/*tags.:format', :controller => 'blog/tags', :action => 'show', :conditions => { :method => :get }  
+  # map.blog_tag '/blog/tags/*tags', :controller => 'blog/tags', :action => 'show', :conditions => { :method => :get }  
   map.blog '/blog', :controller => 'blog'
   
   

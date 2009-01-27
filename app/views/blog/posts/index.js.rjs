@@ -1,6 +1,0 @@
-page.insert_html :bottom, :posts, :partial => '/blog/posts/post', :collection => @posts 
-if @posts.total_pages > @posts.current_page
-  page.call 'EndlessPage.start'
-else
-  page[:loading].hide
-end

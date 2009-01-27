@@ -1,18 +1,18 @@
 module Blog
-  class PostsController < ApplicationController
+  class PostsController < BlogController 
     
     #TODO add auth before filters
     
     # GET /posts
     # GET /posts.xml
     def index
-      @posts = Post.paginate(:page => params[:page], :per_page => 5)
+      @posts = Post.paginate(:page => params[:page], :per_page => 5, :include => :tags)
     
       respond_to do |format|
         format.html # index.html.erb
         format.xml  { render :xml => @posts }
         format.json { render :json => @posts }
-        format.js
+        format.js   { render :file => '/blog/posts/posts.js.rjs' }
         format.rss
       end
     end

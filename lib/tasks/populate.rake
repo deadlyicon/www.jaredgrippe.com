@@ -11,7 +11,7 @@ namespace :db do
       title = Faker::Lorem.sentence( rand(4) + 2 )
       body = <<-BODY
         <p>#{Faker::Lorem.paragraphs( rand(4) + 1 ).join("</p>\n<p>")}</p>
-        #{Blog::Post::PREVIEW_BREAK}
+        <div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>
         <p>#{Faker::Lorem.paragraphs( rand(18) + 2 ).join("</p>\n<p>")}</p>
       BODY
       data.push [ title, body ]

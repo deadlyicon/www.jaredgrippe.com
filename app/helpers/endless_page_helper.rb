@@ -18,11 +18,10 @@ module EndlessPageHelper
   #  endless_page_for @posts, :collection_name => 'blogs', :render => { :partial => 'blog_post', :collection => @posts }
   #
   def endless_page_for(collection, *args, &block)
-    model = collection.first.class
+    collection_name = collection.empty? ? '' : collection.first.class.to_s.downcase.pluralize
     opts = {
-      :collection_name => model.class_name.downcase.pluralize,
-      :total_pages => collection.total_pages,
-      :url => "#{url_for(collection.first.class.new)}.js",
+      :collection_name => collection_name,
+      :url => nil,
       :render => { :partial => collection }
     }.merge(args.first || {})
     
@@ -30,22 +29,25 @@ module EndlessPageHelper
     if block_given?
       content = collection.inject(''){|html, item| html += capture(item, &block) }
     else
-      content = render(opts[:render])
+      content = "\n\n#{render(opts[:render])}\n\n"
     end
     # content = block_given? ? capture('sex', &block) : render(opts[:render])
-        
-    concat javascript_include_tag( 'endless_page' )
-    concat "\n"
-    concat javascript_tag((<<-SCRIPT
-      EndlessPage.contentElementId = $('#{opts[:collection_name]}');
-      EndlessPage.totalPages = #{collection.total_pages};
-      EndlessPage.url = '#{url_for(collection.first.class.new)}.js';
-    SCRIPT
-    ), :anonymous => true)
-    concat "\n"
-    concat content_tag(:div, content, :id => opts[:collection_name])
-    concat "\n"
-    concat content_tag(:div, "Loading more #{opts[:collection_name]}...", :id => "loading_#{opts[:collection_name]}")
+
+    if collection.empty?
+      concat content_tag(:div, content, :id => opts[:collection_name])      
+    else
+      concat javascript_include_tag( 'endless_page' )
+      concat "\n"
+      concat javascript_tag((<<-SCRIPT
+        EndlessPage.contentElementId = $('#{opts[:collection_name]}');
+        EndlessPage.url = '#{opts[:url] or url_for(:format => :js)}';
+      SCRIPT
+      ), :anonymous => true)
+      concat "\n"
+      concat content_tag(:div, content, :id => opts[:collection_name])
+      concat "\n"
+      concat content_tag(:div, "Loading more #{opts[:collection_name]}...", :id => "loading_#{opts[:collection_name]}")
+    end
     ''
   end
   

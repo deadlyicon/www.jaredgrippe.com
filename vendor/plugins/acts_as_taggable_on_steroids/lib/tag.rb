@@ -19,7 +19,7 @@ class Tag < ActiveRecord::Base
   def to_s
     name
   end
-  
+
   def count
     read_attribute(:count).to_i
   end
