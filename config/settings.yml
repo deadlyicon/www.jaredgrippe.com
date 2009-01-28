@@ -14,4 +14,4 @@ staging:
 production:
   site_url: http://www.jaredgrippe.com
   site_name: Jared Grippe
-  admin_email: jared@jaredgrippe.com
+  admin_email: production@jaredgrippe.com
