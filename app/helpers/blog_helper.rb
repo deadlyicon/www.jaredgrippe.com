@@ -11,7 +11,7 @@ module BlogHelper
   end
   
   def blog_tag_path(tag)
-    super tag.to_s
+    super tag.to_s.gsub(/\s/,'_')
   end
   
   def edit_blog_post_path(post)
