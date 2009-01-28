@@ -63,7 +63,7 @@ module Blog
 
     # GET /posts/1/edit
     def edit
-      @post = Post.find(params[:id])
+      @post = Post.find_by_slug(params[:slug].join('/'))
     end
 
     # POST /posts
@@ -88,12 +88,12 @@ module Blog
     # PUT /posts/1
     # PUT /posts/1.xml
     def update
-      @post = Post.find(params[:id])
+      @post = Post.find_by_slug(params[:slug].join('/'))
 
       respond_to do |format|
         if @post.update_attributes(params[:blog_post])
           flash[:notice] = 'Post was successfully updated.'
-          format.html { redirect_to(@post) }
+          format.html { redirect_to :action => 'show', :slug => @post.slug.split('/') }
           format.xml  { head :ok }
           format.json { head :ok }
         else
@@ -107,11 +107,11 @@ module Blog
     # DELETE /posts/1
     # DELETE /posts/1.xml
     def destroy
-      @post = Post.find(params[:id])
+      @post = Post.find_by_slug(params[:slug].join('/'))
       @post.destroy
 
       respond_to do |format|
-        format.html { redirect_to(posts_url) }
+        format.html { redirect_to :action => 'index' }
         format.xml  { head :ok }
         format.json { head :ok }
       end

@@ -14,4 +14,8 @@ module BlogHelper
     super tag.to_s
   end
   
+  def edit_blog_post_path(post)
+    super(post.slug)
+  end
+  
 end

@@ -13,13 +13,30 @@ ActionController::Routing::Routes.draw do |map|
   
   # /blog/posts
   map.with_options(:path_prefix => "blog", :namespace => "blog/", :name_prefix => "blog_") do |blog|
-    blog.resources :posts
-    blog.resources :tags
+    # blog.resources :posts
+    blog.resources :tags #, :requirements => {:id => /.+/} #TODO this should be set to something
   end
-  map.formatted_blog_post '/blog/posts/*slug.:format', :controller => 'blog/posts', :action => 'show', :conditions => { :method => :get }  
-  map.blog_post '/blog/posts/*slug', :controller => 'blog/posts', :action => 'show', :conditions => { :method => :get }  
-  # map.formatted_blog_tag '/blog/tags/*tags.:format', :controller => 'blog/tags', :action => 'show', :conditions => { :method => :get }  
-  # map.blog_tag '/blog/tags/*tags', :controller => 'blog/tags', :action => 'show', :conditions => { :method => :get }  
+  
+  # all this so i can have *slug instead of :slug =\
+  map.with_options(:path_prefix => "blog/posts", :controller => 'blog/posts') do |blog|
+    blog.blog_posts               '',                    :action => 'index',   :conditions => { :method => :get    }
+    blog.formatted_blog_posts     '.:format',            :action => 'index',   :conditions => { :method => :get    }
+    blog.connect                  '/*slug',              :action => 'create',  :conditions => { :method => :post   }
+    blog.connect                  '/*slug.:format',      :action => 'create',  :conditions => { :method => :post   }
+    blog.new_blog_post            '/*slug/new',          :action => 'new',     :conditions => { :method => :get    }
+    blog.formatted_new_blog_post  '/*slug/new.:format',  :action => 'new',     :conditions => { :method => :get    }
+    blog.edit_blog_post           '/*slug/edit',         :action => 'edit',    :conditions => { :method => :get    }
+    blog.formatted_edit_blog_post '/*slug/edit.:format', :action => 'edit',    :conditions => { :method => :get    }
+    blog.blog_post                '/*slug',              :action => 'show',    :conditions => { :method => :get    }
+    blog.formatted_blog_post      '/*slug.:format',      :action => 'show',    :conditions => { :method => :get    }
+    blog.connect                  '/*slug',              :action => 'update',  :conditions => { :method => :put    }
+    blog.connect                  '/*slug.:format',      :action => 'update',  :conditions => { :method => :put    }
+    blog.connect                  '/*slug',              :action => 'destroy', :conditions => { :method => :delete }
+    blog.connect                  '/*slug.:format',      :action => 'destroy', :conditions => { :method => :delete }
+  end
+
+  # map.formatted_blog_post '/blog/posts/*slug.:format', :controller => 'blog/posts', :action => 'show', :conditions => { :method => :get }  
+
   map.blog '/blog', :controller => 'blog'
   
   
