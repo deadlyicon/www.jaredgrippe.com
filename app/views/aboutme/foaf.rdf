@@ -1,0 +1,29 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:admin="http://webns.net/mvcb/">
+  <foaf:PersonalProfileDocument rdf:about="">
+    <foaf:maker rdf:resource="#me"/>
+    <foaf:primaryTopic rdf:resource="#me"/>
+  </foaf:PersonalProfileDocument>
+  <foaf:Person rdf:ID="me">
+    <foaf:name>Jared Grippe</foaf:name>
+    <foaf:title>Mr</foaf:title>
+
+    <foaf:givenname>Jared</foaf:givenname>
+    <foaf:family_name>Grippe</foaf:family_name>
+    <foaf:nick>deadlyicon</foaf:nick>
+    <foaf:mbox rdf:resource="mailto:foaf@deadlyicon.com"/>
+    <foaf:homepage rdf:resource="http://www.deadlyicon.com"/>
+    <foaf:depiction rdf:resource="http://www.deadlyicon.com/jared/index.jpg"/>
+    <foaf:phone rdf:resource="tel:14153074360"/>
+
+    <foaf:workplaceHomepage rdf:resource="http://www.deadlyicon.com/resume"/>
+    <foaf:workInfoHomepage rdf:resource="Wed Development"/>
+    <foaf:knows>
+      <foaf:Person>
+        <foaf:name>Ian Baker</foaf:name>
+        <foaf:mbox rdf:resource="mailto:ian@sonic.net"/>
+        <rdfs:seeAlso rdf:resource="http://people.tribe.net/raindrift"/>
+      </foaf:Person>
+
+    </foaf:knows>
+  </foaf:Person>
+</rdf:RDF>

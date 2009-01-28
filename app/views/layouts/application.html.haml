@@ -4,6 +4,6 @@
   %head
     = render :partial => 'layouts/headers'
     = yield :head
-  %body
+  %body{ :controller => controller.params['controller'], :action => controller.params['action'] }
     - render :layout => 'layouts/common' do
       = yield :layout

@@ -1,0 +1,35 @@
+body[controller="aboutme"][action="index"]
+  #aboutme
+    :position relative
+    :padding 1em
+    #details
+      :float left
+      :margin 0 1em 1em 0
+      #mugshot
+        :margin-left 1em
+      #icons
+        :text-align center
+        .icon
+      #stats
+        .stat
+          .description
+            :text-align right
+            :vertical-align top
+            :padding-right 0.5em
+            :text-transform capitalize
+            :font-size 95%
+            &:after
+              :content ":"
+          .value
+            :font-weight bold
+            :font-size 110%
+        .links .value a
+          :text-transform lowercase
+          :display block
+
+    #description
+      p
+        :text-align justify
+      & > p:first-child
+        :margin-top 0
+    

@@ -1,154 +1,18 @@
 @import _common.sass
 
-html,body
-  :border 0
-  :padding 0
-  :margin 0
-
-body
-  :overflow-y  scroll
-  :font normal normal normal 90% Trebuchet MS, Trebuchet
-  :color = !normal_text_color
-  :font-weight ligher
-  :letter-spacing 1px
-  :font-size = !normal_text_size
-
 a
   :color = !orange_text
   :text-decoration none
   :padding 0 1px
   &:visited
     :color = !orange_text
-
-
-// Layout
-page
-  :position relative
-
-.column
-  :position relative
-  :width 955px
-  :margin 0 auto
-
-#fixed-background
-  :position fixed
-  :top 0
-  :left 0
-  :bottom 0
-  :right 0
-  :background #000418 url(../images/godrays.gif) no-repeat fixed center center
-  
-  .background
-    :height 100%
-    :background-color black
-    :opacity 0.80
-    :-moz-opacity 0.80
-    :filter alpha(opacity=80)
-
-
-#controls 
-  :position absolute
-  :top 0.5em
-  :right 1em
-  :font-size 90%
-  :color = !blue_text
-  a
-    :margin-left 0.5em
-
-#content
-  :padding 0.5em 3em 0.5em 1em
-
-
-
-.indent 
-  :margin-left 1em 
+  img
+    :border none
 
 h1
   :font-weight lighter
   :font-size = !large_text_size
   :margin 0
-
-
-// Navigation Styles
-#nav
-  :position absolute
-  :top 19px
-  :right -35px
-  :margin 0
-  :padding 0
-
-  &, li
-    :list-style-type none
-    :list-style none inside
-
-  li
-    :display block
-    :width 35px
-    :background url('../images/nav/button/background/top.png') no-repeat scroll top left
-    :margin-bottom 10px
-    :padding 9px 0 0 0
-    a
-      :display block
-      :width 35px
-      :background url('../images/nav/button/background/bottom.png') no-repeat scroll bottom left
-      :padding 0 0 9px 0
-      div
-        :background-color black
-
-  li.aboutme a div
-    :background black url('../images/nav/button/aboutme.png') no-repeat scroll 9px 0px
-    :height 76px
-
-  li.twitter a div
-    :background black url('../images/nav/button/twitter.png') no-repeat scroll 3px 0px
-    :height 26px
-
-  li.postsfeed a div
-    :background black url('../images/nav/button/rss.png') no-repeat scroll 3px 0px
-    :height 25px
-
-// === FLASH MESSAGES ===
-.flash
-  :text-align center
-  &.notice
-    :color = !flash_notice_color 
-  &.warning
-    :color = !flash_warning_color
-  &.error
-    :color = !flash_error_color  
-
-
-  
-// === ERROR MESSAGES === 
-div
-  #errorExplanation
-    h2
-    p
-    ul
-      li
-
-
-  .fieldWithErrors
-    label
-    input, select, textarea
-
-
-// === Site Title ===
-body
-  h1.title 
-    a
-      :color = !blue_text
-      :word-spacing -5px
-    span:before
-      :content "class"
-      :color = !orange_text
-    span:after
-      :content "< Programmer"
-      :color = !brown_text
-#content:after
-  :content "end"
-  :color = !orange_text
-  :font-size = !large_text_size
 
 
 // Simulating TextMate Sunburst Theme
@@ -169,3 +33,13 @@ body
     :color = !brown_text
 
 
+
+// Tables
+table, table td, table tr
+  :border none
+  :padding 0
+  :margin 0
+
+
+
+@import layout.sass
