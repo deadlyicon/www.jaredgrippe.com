@@ -1,7 +1,7 @@
 module Blog
   class PostsController < BlogController 
     
-    #TODO add auth before filters
+    before_filter :has_admin_access?, :except => [:index, :show]
     
     # GET /posts
     # GET /posts.xml

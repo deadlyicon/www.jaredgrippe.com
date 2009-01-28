@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
   end
   alias :current_user_is_an_admin? :admin?
   
+  def has_admin_access?
+    render :text => '404', :status => 404 unless admin?
+  end
+  
   def redirect # TODO post about this redirect method
     redirect_to( params['destination'] )
   end
