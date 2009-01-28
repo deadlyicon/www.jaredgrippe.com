@@ -1,10 +1,7 @@
 %ul#nav
   %li.aboutme
-    %a.aboutme{ :href => about_me_path }
-      %div
+    = link_to 'about me', about_me_path
   %li.twitter
-    %a{ :href => 'http://www.twitter.com/deadlyicon' }
-      %div
+    = link_to 'twitter', 'http://www.twitter.com/deadlyicon'
   %li.postsfeed
-    %a{ :href => formatted_blog_posts_path(:rss) }
-      %div
+    = link_to 'rss feed', formatted_blog_posts_path(:rss)
