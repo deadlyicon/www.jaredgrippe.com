@@ -1,4 +1,6 @@
 - title 'posts'
+- head do
+  = auto_discovery_link_tag :rss, { :format => :rss }, { :title => APP_CONFIG[:site_name] }
 - if current_user_is_an_admin?
   = link_to 'Post.new', new_blog_post_path
 = endless_page_for @posts, :render => { :partial => '/blog/posts/post', :collection => @posts, :locals => { :preview => true } }   

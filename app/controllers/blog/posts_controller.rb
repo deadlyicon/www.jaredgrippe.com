@@ -6,8 +6,13 @@ module Blog
     # GET /posts
     # GET /posts.xml
     def index
-      @posts = Post.paginate(:page => params[:page], :per_page => 5, :include => :tags)
-    
+      # TODO check for rss format
+      # if params[:format].eql? :rss
+        # get last x by datetime from now
+      # else
+        @posts = Post.paginate(:page => params[:page], :per_page => 5, :include => :tags)
+      # end
+      
       respond_to do |format|
         format.html # index.html.erb
         format.xml  { render :xml => @posts }
