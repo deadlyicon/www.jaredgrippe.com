@@ -39,7 +39,7 @@ module AutoAssetsHelper
   #   stylesheet_link_tag :auto_includes
   def stylesheet_link_tag(*sources)
     options = sources.extract_options!.stringify_keys
-    sources.map!{ |s| s.eql?(:auto_includes) ? AutoIncludeHelper.path(@controller) : s }
+    sources.map!{ |s| s.eql?(:auto_includes) ? AutoAssetsHelper.path(@controller) : s }
     super
   end
   
@@ -47,7 +47,7 @@ module AutoAssetsHelper
   #   javascript_include_tag :auto_includes
   def javascript_include_tag(*sources)
     options = sources.extract_options!.stringify_keys
-    sources.map!{ |s| s.eql?(:auto_includes) ? AutoIncludeHelper.path(@controller) : s }
+    sources.map!{ |s| s.eql?(:auto_includes) ? AutoAssetsHelper.path(@controller) : s }
     super
   end
 
