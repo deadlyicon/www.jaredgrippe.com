@@ -28,7 +28,7 @@ module Blog
     # GET /posts/2009/1/21/the-post-title.xml
     def show
       if params[:slug]
-        @post = Post.find_by_slug(params[:slug].join('/'))
+        @post = find_post_by_slug
       elsif params[:id]
         unless @post = Post.find_by_id(params[:id])
           #render 404
@@ -63,7 +63,7 @@ module Blog
 
     # GET /posts/1/edit
     def edit
-      @post = Post.find_by_slug(params[:slug].join('/'))
+      @post = find_post_by_slug
     end
 
     # POST /posts
@@ -88,7 +88,7 @@ module Blog
     # PUT /posts/1
     # PUT /posts/1.xml
     def update
-      @post = Post.find(params[:id])
+      @post = find_post_by_slug
 
       respond_to do |format|
         if @post.update_attributes(params[:blog_post])
@@ -107,7 +107,7 @@ module Blog
     # DELETE /posts/1
     # DELETE /posts/1.xml
     def destroy
-      @post = Post.find(params[:id])
+      @post = find_post_by_slug
       @post.destroy
 
       respond_to do |format|
@@ -115,6 +115,12 @@ module Blog
         format.xml  { head :ok }
         format.json { head :ok }
       end
+    end
+    
+    private
+    
+    def find_post_by_slug
+      Post.find_by_slug(params[:slug].join('/'))
     end
   end
 end
