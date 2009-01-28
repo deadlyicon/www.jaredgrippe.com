@@ -10,7 +10,7 @@ module Blog
       # if params[:format].eql? :rss
         # get last x by datetime from now
       # else
-        @posts = Post.paginate(:page => params[:page], :per_page => 5, :include => :tags)
+        @posts = Post.paginate(:page => params[:page], :per_page => 5, :include => :tags, :order => 'created_at ASC')
       # end
       
       respond_to do |format|
@@ -69,12 +69,12 @@ module Blog
     # POST /posts
     # POST /posts.xml
     def create
-      @post = Post.new(params[:post])
+      @post = Post.new(params[:blog_post])
 
       respond_to do |format|
         if @post.save
           flash[:notice] = 'Post was successfully created.'
-          format.html { redirect_to(@post) }
+          format.html { redirect_to :action => 'show', :slug => @post.slug.split('/') }
           format.xml  { render :xml  => @post, :status => :created, :location => @post }
           format.json { render :json => @post, :status => :created, :location => @post }
         else
@@ -88,7 +88,7 @@ module Blog
     # PUT /posts/1
     # PUT /posts/1.xml
     def update
-      @post = Post.find_by_slug(params[:slug].join('/'))
+      @post = Post.find(params[:id])
 
       respond_to do |format|
         if @post.update_attributes(params[:blog_post])
@@ -107,7 +107,7 @@ module Blog
     # DELETE /posts/1
     # DELETE /posts/1.xml
     def destroy
-      @post = Post.find_by_slug(params[:slug].join('/'))
+      @post = Post.find(params[:id])
       @post.destroy
 
       respond_to do |format|

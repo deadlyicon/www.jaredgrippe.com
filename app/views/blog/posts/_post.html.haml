@@ -3,6 +3,9 @@
     .title
       %div
         = link_to post.title, blog_post_path(post)
+    .date
+      = post.created_at.humanize
+      
     .tags
       %div
         - post.tags.map do |tag|

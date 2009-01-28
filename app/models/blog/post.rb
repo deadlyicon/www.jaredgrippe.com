@@ -45,6 +45,10 @@ module Blog
     #   slug
     # end
     # 
+    def created_at
+      created_at ||= Time.now
+    end
+    
     def year
       created_at.year
     end
