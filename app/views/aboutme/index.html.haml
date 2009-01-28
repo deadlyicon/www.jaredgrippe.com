@@ -4,15 +4,17 @@
       %a{ :href => 'http://www.flickr.com/photos/deadlyicon/sets/72157594181019416/' }
         %img{ :src => 'http://farm3.static.flickr.com/2318/2429401455_294f8e663a_m.jpg', :height => 240, :width => 240 }
     #icons
-      = icon 'foaf.png', url_for( :action => :foaf )
+      = icon 'foaf.png',   url_for( :action => :foaf )
+      = icon 'rss.png',    'http://blog.deadlyicon.com/', 'personal blog'
+      = icon 'twtter.png', 'http://www.twitter.com/deadlyicon'
     = stats :id => :stats do
-      / TODO add FOAF link and icon
       = stat :full_name, 'Jared Grippe'
       = stat :age, 26 # TODO make this generate from your birthdate
       = stat :birthday, Date.parse('August 23rd 1982')
       = stat :email_address, h('jared@jaredgrippe.com')
       = stat :links do
-        = link_to 'google profile', 'http://www.google.com/s2/profiles/104443186735122889135'
+        = link_to 'resume',         :controller => :resume
+        =# link_to 'google profile', 'http://www.google.com/s2/profiles/104443186735122889135'
         = link_to 'twitter',        'http://www.twitter.com/deadlyicon'
         = link_to 'Facebook',       'http://www.facebook.com/profile.php?id=509634696'
         = link_to 'Personal Blog',  'http://blog.deadlyicon.com/'
@@ -21,13 +23,5 @@
         = link_to 'linkedin',       'http://www.linkedin.com/in/deadlyicon'
         
   #description
-    %p
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ipsum. Mauris congue feugiat dui. Aliquam semper auctor leo. Suspendisse faucibus orci adipiscing mauris. Etiam malesuada sodales metus. Sed sodales mi quis pede. Aenean nec sapien. Morbi nec velit. Proin vitae neque. Curabitur orci.
-    %p
-      Praesent luctus, purus eu iaculis tincidunt, ipsum lacus placerat pede, vitae vulputate odio mi sit amet nunc. Nam fermentum, enim ut ultrices vestibulum, pede sapien elementum nisi, eget sodales ligula felis at diam. Sed in nibh. Aliquam mi dolor, pretium eu, rhoncus quis, auctor eget, erat. Maecenas consequat dapibus nunc. Cras id sapien sed elit commodo congue. Suspendisse rhoncus, velit sed rhoncus sollicitudin, enim nunc tristique risus, quis gravida urna nulla egestas sem. Vivamus eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ultrices aliquam felis. Curabitur eget lacus.
-    %p
-      In hac habitasse platea dictumst. Fusce sagittis, lorem at laoreet ornare, eros diam adipiscing dolor, auctor bibendum augue magna ultricies arcu. Donec eu arcu non sem interdum suscipit. Nunc sodales porta tellus. Suspendisse elit sapien, suscipit a, facilisis tempor, luctus quis, risus. Quisque imperdiet feugiat ante. Nunc ut nisi. Curabitur in mauris porttitor est vestibulum placerat. Cras eget mauris. Donec consectetur. Etiam magna.
-    %p
-      Pellentesque vulputate. Curabitur tristique, magna eget malesuada iaculis, ipsum dolor malesuada metus, ac aliquet massa nisl nec dui. Sed quis justo. Aenean imperdiet consectetur dui. Fusce nec lacus ac diam tempor sollicitudin. Duis condimentum sollicitudin arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam congue mollis dui. Sed lorem. Vestibulum ac dolor ut lectus vestibulum mattis.
-    %p
-      Sed non magna. Fusce dictum sodales ligula. Aenean scelerisque nisl sed urna. Sed arcu nunc, pretium pulvinar, sollicitudin quis, commodo ut, nisi. Vivamus vel dui. Mauris sed ligula. Vivamus dapibus viverra dolor. Nullam id felis. Etiam enim sem, sollicitudin et, faucibus sit amet, pulvinar ut, ipsum. Aenean faucibus mauris vel diam. Curabitur cursus, lectus id vehicula tempor, neque diam pulvinar pede, sit amet commodo enim orci nec massa. Phasellus nulla turpis, eleifend quis, tempus eleifend, condimentum id, diam. Aliquam dui nibh, laoreet vitae, fringilla quis, varius eget, neque. Vivamus bibendum accumsan nisl.
+    %p{ :style => 'text-align:center; font-weight:bolder' }
+      more coming soon!

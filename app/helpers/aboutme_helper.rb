@@ -14,8 +14,8 @@ module AboutmeHelper
     end
   end
   
-  def icon( name, url, options={} )
-    link_to image_tag("aboutme/icons/#{name}"), url, :class => 'icon'
+  def icon( name, url, alt=nil )
+    link_to image_tag("aboutme/icons/#{name}", :alt => alt ), url, :class => 'icon'
   end
   
 end

@@ -10,20 +10,13 @@
     <foaf:givenname>Jared</foaf:givenname>
     <foaf:family_name>Grippe</foaf:family_name>
     <foaf:nick>deadlyicon</foaf:nick>
-    <foaf:mbox rdf:resource="mailto:foaf@deadlyicon.com"/>
-    <foaf:homepage rdf:resource="http://www.deadlyicon.com"/>
-    <foaf:depiction rdf:resource="http://www.deadlyicon.com/jared/index.jpg"/>
+    <foaf:mbox rdf:resource="mailto:foaf@jaredgrippe.com"/>
+    <foaf:homepage rdf:resource="http://www.jaredgrippe.com"/>
+    <foaf:depiction rdf:resource="http://www.jaredgrippe.com/aboutme"/>
     <foaf:phone rdf:resource="tel:14153074360"/>
-
-    <foaf:workplaceHomepage rdf:resource="http://www.deadlyicon.com/resume"/>
+    
+    <foaf:workplaceHomepage rdf:resource="http://www.jaredgrippe.com/resume"/>
     <foaf:workInfoHomepage rdf:resource="Wed Development"/>
-    <foaf:knows>
-      <foaf:Person>
-        <foaf:name>Ian Baker</foaf:name>
-        <foaf:mbox rdf:resource="mailto:ian@sonic.net"/>
-        <rdfs:seeAlso rdf:resource="http://people.tribe.net/raindrift"/>
-      </foaf:Person>
-
-    </foaf:knows>
+    
   </foaf:Person>
 </rdf:RDF>
