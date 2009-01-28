@@ -1,0 +1,146 @@
+html,body
+  :border 0
+  :padding 0
+  :margin 0
+
+body
+  :overflow-y  scroll
+  :font normal normal normal 90% Trebuchet MS, Trebuchet
+  :color = !normal_text_color
+  :font-weight ligher
+  :letter-spacing 1px
+  :font-size = !normal_text_size
+
+page
+  :position relative
+
+.column
+  :position relative
+  :width 955px
+  :margin 0 auto
+
+#fixed-background
+  :position fixed
+  :top 0
+  :left 0
+  :bottom 0
+  :right 0
+  :background #000418 url(../images/godrays.gif) no-repeat fixed center center
+  
+  .background
+    :height 100%
+    :background-color black
+    :opacity 0.80
+    :-moz-opacity 0.80
+    :filter alpha(opacity=80)
+
+
+#controls 
+  :position absolute
+  :top 0.5em
+  :right 1em
+  :font-size 90%
+  :color = !blue_text
+  a
+    :margin-left 0.5em
+
+#content
+  :padding 0.5em 3em 0.5em 1em
+
+#content:after
+  :content '.'
+  :display block
+  :height 0
+  :visibility hidden
+  :clear both 
+
+
+/ .indent 
+/   :margin-left 1em 
+
+
+
+// Navigation Styles
+#nav
+  :position absolute
+  :top 19px
+  :right -35px
+  :margin 0
+  :padding 0
+
+  &, li
+    :list-style-type none
+    :list-style none inside
+
+  li
+    :display block
+    a
+      :display block
+      :width 35px
+      :padding 9px 0 9px 5px
+      :margin-bottom 10px
+      :-moz-border-radius 7px
+      :-webkit-border-radius 7px
+      :background black
+      / hides text content
+      :font-size 0px
+      :white-space nowrap
+      :overflow hidden
+      :text-indent 10000px      
+
+  li.aboutme a
+    :background black url('../images/nav/button/aboutme.png') no-repeat scroll 14px 9px
+    :height 76px
+
+  li.twitter a
+    :background black url('../images/nav/button/twitter.png') no-repeat scroll 7px 9px
+    :height 26px
+
+  li.postsfeed a
+    :background black url('../images/nav/button/rss.png') no-repeat scroll 7px 9px
+    :height 25px
+
+// === FLASH MESSAGES ===
+.flash
+  :text-align center
+  &.notice
+    :color = !flash_notice_color 
+  &.warning
+    :color = !flash_warning_color
+  &.error
+    :color = !flash_error_color  
+
+
+  
+// === ERROR MESSAGES === 
+div
+  #errorExplanation
+    h2
+    p
+    ul
+      li
+
+
+  .fieldWithErrors
+    label
+    input, select, textarea
+
+
+// === Site Title ===
+body
+  h1.title 
+    a
+      :color = !blue_text
+      :word-spacing -5px
+    span:before
+      :content "class"
+      :color = !orange_text
+    span:after
+      :content "< Programmer"
+      :color = !brown_text
+#content:after
+  :content "end"
+  :clear both
+  :visibility visible
+  :color = !orange_text
+  :font-size = !large_text_size
