@@ -43,6 +43,17 @@
   .body
     :overflow hidden
     :margin-left 1em
+    :color = !green_text
+    a
+      :color = !yellow_text
+    a:before
+      :content '#{'
+    a:after
+      :content '}'
+  .body:before
+    :content '<<-POST'
+  .body:after
+    :content 'POST'
       
   input[type="submit"]
     :border none

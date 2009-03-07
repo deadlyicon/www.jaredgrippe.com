@@ -11,7 +11,8 @@
         - post.tags.map do |tag|
           = "<a class=\"tag\" href=\"#{blog_tag_path(tag)}\"><span>#{tag}</span></a>"
     .body
-      = (defined?(preview) and preview) ? post.preview : post.body
+      %div
+        = (defined?(preview) and preview) ? post.preview : post.body
       
   - if current_user_is_an_admin?
     .controls
