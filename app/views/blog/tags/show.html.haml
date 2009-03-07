@@ -2,5 +2,4 @@
   = auto_discovery_link_tag :rss, formatted_blog_tag_path(:format => :rss), :title => "#{@tags.join(' ')} | #{APP_CONFIG[:site_name]}"
   - stylesheet_link_tag 'post'
 - title "#{@tags.join(' ')}"
-#posts
-  = endless_page_for @posts, :render => { :partial => '/blog/posts/post', :collection => @posts, :locals => { :preview => true } }
+= endless_page_for @posts, :url => url_for( :overwrite_params => { :format => 'js' } ), :render => { :partial => '/blog/posts/post', :collection => @posts, :locals => { :preview => true } }

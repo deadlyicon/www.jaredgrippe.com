@@ -40,7 +40,7 @@ module EndlessPageHelper
       concat "\n"
       concat javascript_tag((<<-SCRIPT
         EndlessPage.contentElementId = $('#{opts[:collection_name]}');
-        EndlessPage.url = '#{opts[:url] or url_for(:format => :js)}';
+        EndlessPage.url = '#{opts[:url] or url_for( :overwrite_params => { :format => 'js' } )}';
       SCRIPT
       ), :anonymous => true)
       concat "\n"

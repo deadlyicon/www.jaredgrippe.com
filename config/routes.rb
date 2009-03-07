@@ -14,7 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   # /blog/posts
   map.with_options(:path_prefix => "blog", :namespace => "blog/", :name_prefix => "blog_") do |blog|
     blog.resources :posts, :requirements => {:id => /[^.\?]+/}
-    blog.resources :tags #, :requirements => {:id => /.+/} #TODO this should be set to something
+    blog.resources :tags,  :requirements => {:id => /[^.\?]+/}
   end
   
   map.blog '/blog', :controller => 'blog'

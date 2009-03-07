@@ -13,7 +13,7 @@ module Blog
       find_tags_options = Post.find_options_for_find_tagged_with(@tags, :include => :tags)
       find_tags_options.merge!({
         :page => params[:page],
-        :per_page => 2
+        :per_page => 5
       })      
       @posts = Post.paginate( :all, find_tags_options )
 
