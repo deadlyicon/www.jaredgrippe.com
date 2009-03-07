@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :only => :create
+  # TODO WARNING TEMP - you broke this to stop people from hack signing up!
+  # skip_before_filter :verify_authenticity_token, :only => :create
   
   def new
   end
