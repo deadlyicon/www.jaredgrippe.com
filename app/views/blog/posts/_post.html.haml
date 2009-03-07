@@ -2,7 +2,7 @@
   %div
     .title
       %div
-        = link_to post.title, blog_post_path(post)
+        = link_to post.title, post
     .date
       = post.created_at.humanize
       
@@ -17,4 +17,4 @@
     .controls
       = link_to 'Edit', edit_blog_post_path(post), :class => :edit
       = link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete, :class => :delete
-      = link_to 'Back', blog_posts_path, :class => :back
+      = link_to 'Back', :back, :class => :back

@@ -27,14 +27,7 @@ module Blog
     # GET /posts/2009/1/21/the-post-title
     # GET /posts/2009/1/21/the-post-title.xml
     def show
-      if params[:slug]
-        @post = find_post_by_slug
-      elsif params[:id]
-        unless @post = Post.find_by_id(params[:id])
-          #render 404
-        end
-        redirect_to blog_post_url(@post)
-      end
+      @post = Post.find_by_param(params[:id], :include => :tags ) #TODO eager load tags
 
       respond_to do |format|
         if @post
@@ -63,7 +56,7 @@ module Blog
 
     # GET /posts/1/edit
     def edit
-      @post = find_post_by_slug
+      @post = Post.find_by_param(params[:id])
     end
 
     # POST /posts
@@ -74,7 +67,7 @@ module Blog
       respond_to do |format|
         if @post.save
           flash[:notice] = 'Post was successfully created.'
-          format.html { redirect_to :action => 'show', :slug => @post.slug.split('/') }
+          format.html { redirect_to :action => 'show' }
           format.xml  { render :xml  => @post, :status => :created, :location => @post }
           format.json { render :json => @post, :status => :created, :location => @post }
         else
@@ -88,12 +81,12 @@ module Blog
     # PUT /posts/1
     # PUT /posts/1.xml
     def update
-      @post = find_post_by_slug
+      @post = Post.find_by_param(params[:id])
 
       respond_to do |format|
-        if @post.update_attributes(params[:blog_post])
+        if @post and @post.update_attributes(params[:blog_post])
           flash[:notice] = 'Post was successfully updated.'
-          format.html { redirect_to :action => 'show', :slug => @post.slug.split('/') }
+          format.html { redirect_to url_for( @post ) }
           format.xml  { head :ok }
           format.json { head :ok }
         else
@@ -107,7 +100,7 @@ module Blog
     # DELETE /posts/1
     # DELETE /posts/1.xml
     def destroy
-      @post = find_post_by_slug
+      @post = Post.find_by_param(params[:id])
       @post.destroy
 
       respond_to do |format|
@@ -117,10 +110,13 @@ module Blog
       end
     end
     
-    private
-    
-    def find_post_by_slug
-      Post.find_by_slug(params[:slug].join('/'))
+    def url_for(options={})
+      if options.is_a? Blog::Post or options[:id].is_a? Blog::Post
+         CGI::unescape super
+      else
+        super
+      end
     end
+    
   end
 end
