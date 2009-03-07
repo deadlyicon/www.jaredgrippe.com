@@ -105,12 +105,18 @@ module AutoAssetHelper
     end
 
     def assets
+      @assets ||= ( CACHED_ASSETS || find_assets )
+    end
+    
+    def find_assets  
       ApplicationController.logger.debug "Searching for auto includable assets"
       asset_extensions.inject([]){ |assets, asset_ext|
         assets.concat Dir[File.join(ASSETS_DIR,'**',"*.#{asset_ext}")]
       }.map{|a| a.sub(ASSETS_DIR ,'')}
     end
-    memoize :assets if RAILS_ENV.downcase.match('production')
+    
+    # this enables asset searching for each page load in development
+    CACHED_ASSETS = RAILS_ENV.match('development') ? nil : AutoAssetHelper.find_assets
 
   end
   
