@@ -1,6 +1,10 @@
 module Blog
   class TagsController < BlogController 
     
+    def index
+      @tags = Post.tag_counts
+    end
+    
     # GET /posts/tags/funny
     # GET /posts/tags/awesome+weird
     # GET /posts/tags/lame+sexy+fun.xml

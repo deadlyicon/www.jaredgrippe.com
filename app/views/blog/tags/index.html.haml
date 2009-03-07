@@ -1,3 +1,6 @@
 - title 'Tags'
+- head do
+  = stylesheet_link_tag 'tags'
 %center
-  tag cloud coming soon
+  - tag_cloud @tags, %w(small medium large huge) do |tag, size|
+    = link_to tag.name, blog_tag_path(tag), :class => "tag #{size}"
