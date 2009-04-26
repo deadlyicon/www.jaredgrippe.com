@@ -4,9 +4,9 @@
       %a{ :href => 'http://www.flickr.com/photos/deadlyicon/sets/72157594181019416/' }
         %img{ :src => 'http://farm3.static.flickr.com/2318/2429401455_294f8e663a_m.jpg', :height => 240, :width => 240 }
     #icons
-      = icon 'foaf.png',   url_for( :action => :foaf )
-      = icon 'rss.png',    'http://blog.deadlyicon.com/', 'personal blog'
-      = icon 'twitter.png', 'http://www.twitter.com/deadlyicon'
+      = icon 'foaf.png',    url_for( :action => :foaf )
+      = icon 'rss.png',     DEADLYICON_BLOG_URL, 'personal blog'
+      = icon 'twitter.png', TWITTER_URL
     = stats :id => :stats do
       = stat :full_name, 'Jared Grippe'
       = stat :age, 26 # TODO make this generate from your birthdate
@@ -14,13 +14,13 @@
       = stat :email_address, h('jared@jaredgrippe.com')
       = stat :links do
         = link_to 'resume',         :controller => :resume
-        =# link_to 'google profile', 'http://www.google.com/s2/profiles/104443186735122889135'
-        = link_to 'twitter',        'http://www.twitter.com/deadlyicon'
-        = link_to 'Facebook',       'http://www.facebook.com/profile.php?id=509634696'
-        = link_to 'Personal Blog',  'http://blog.deadlyicon.com/'
-        = link_to 'Flickr',         'http://www.flickr.com/photos/deadlyicon/'
-        = link_to 'del.icio.us',    'http://del.icio.us/deadlyicon'
-        = link_to 'linkedin',       'http://www.linkedin.com/in/deadlyicon'
+        =# link_to 'google profile', GOOGLE_PROFILE_URL
+        = link_to 'twitter',        TWITTER_URL
+        = link_to 'Facebook',       FACEBOOK_URL
+        = link_to 'Personal Blog',  DEADLYICON_BLOG_URL
+        = link_to 'Flickr',         FLICKR_URL
+        = link_to 'del.icio.us',    DELICIOUS_URL
+        = link_to 'linkedin',       LINKEDIN_URL
         
   #description
     %p{ :style => 'text-align:center; font-weight:bolder' }

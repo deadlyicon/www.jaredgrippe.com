@@ -1,8 +1,8 @@
 - title 'Rantings'
 - head do
-  = auto_discovery_link_tag :rss, formatted_blog_posts_path(:rss), { :title => APP_CONFIG[:site_name] }
+  = auto_discovery_link_tag :rss, BLOG_POSTS_FEED_URL, { :title => APP_CONFIG[:site_name] }
 - if current_user_is_an_admin?
   = link_to 'Post.new', new_blog_post_path
-= endless_page_for @posts, :url => formatted_blog_posts_path(:js), :render => { :partial => '/blog/posts/post', :collection => @posts, :locals => { :preview => true } }   
+= endless_page_for @posts, :url => formatted_blog_posts_path(:js), :render => { :partial => '/blog/posts/post', :collection => @posts, :locals => { :preview => true } }
 
 
